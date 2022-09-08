@@ -14,7 +14,7 @@ public class PersonTest {
   private Person john;
 
   /**
-   * Create a Person class
+   * Create a Person class.
    */
   @Before
   public void setUp() {
@@ -23,7 +23,7 @@ public class PersonTest {
   }
 
   /**
-   * Test if the first name matches
+   * Test if the first name matches.
    */
   @Test
   public void testFirst() {
@@ -32,7 +32,7 @@ public class PersonTest {
   }
 
   /**
-   * Test if the second name matches
+   * Test if the second name matches.
    */
   @Test
   public void testSecond() {
@@ -40,7 +40,7 @@ public class PersonTest {
   }
 
   /**
-   * Test if the year of Birth matches
+   * Test if the year of Birth matches.
    */
   @Test
   public void testYearOfBirth() {
