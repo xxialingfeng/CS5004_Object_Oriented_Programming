@@ -88,7 +88,7 @@ public class Stock {
     //return ((int)(initial * 10000)) / 10000.0;
     //String str = String.format("%.4f", initial);
     //return Double.parseDouble(str);
-    DecimalFormat df = new DecimalFormat("#.00");
+    DecimalFormat df = new DecimalFormat("#.0000");
     return Double.parseDouble(df.format(initial));
   }
 
