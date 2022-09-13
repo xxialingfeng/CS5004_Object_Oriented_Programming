@@ -1,5 +1,7 @@
 package stock;
 
+import java.text.DecimalFormat;
+
 /**.
  * This class represents stock.
  * @author Lingfeng Xia
@@ -83,9 +85,11 @@ public class Stock {
    */
   public double getChangePercent() {
     double initial = (this.currentPrice - this.costBasis) / this.costBasis;
-    return ((int)(initial * 10000)) / 10000.0;
+    //return ((int)(initial * 10000)) / 10000.0;
     //String str = String.format("%.4f", initial);
     //return Double.parseDouble(str);
+    DecimalFormat df = new DecimalFormat("#.0000");
+    return Double.parseDouble(df.format(initial));
   }
 
   /**
