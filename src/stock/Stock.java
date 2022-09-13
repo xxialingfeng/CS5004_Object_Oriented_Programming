@@ -99,8 +99,10 @@ public class Stock {
    */
   public String toString() {
     String ans = "";
+    double initial = 100 * (this.currentPrice - this.costBasis) / this.costBasis;
+    DecimalFormat df = new DecimalFormat("#.00");
     ans += this.name + " " + "Current Price: $ " + getCurrentPrice();
-    ans += "\r\n" + " " + "Gain/Loss: " + getChangePercent() * 100 + "%";
+    ans += "\r\n" + " " + "Gain/Loss: " + df.format(initial) + "%";
     return ans;
   }
 }
