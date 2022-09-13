@@ -1,5 +1,9 @@
 package stock;
 
+import static java.lang.Math.round;
+
+import java.math.BigDecimal;
+
 /**.
  * @author Lingfeng Xia
  * This class represents stock. The stock has its company name, symble, costbasis and current price
@@ -82,7 +86,9 @@ public class Stock {
    * @return the change percent of the stock
    */
   public double getChangePercent() {
-    return Math.abs(this.currentPrice - this.costBasis) / this.costBasis;
+    double initial = (this.currentPrice - this.costBasis) / this.costBasis;
+    String str = String.format("%.4f", initial);
+    return Double.parseDouble(str);
   }
 
   /**
@@ -91,7 +97,9 @@ public class Stock {
    * @return the information about the stock in string format
    */
   public String toString() {
-    return this.name + " " + this.symbol + " " + "Current Price: $ " + getCurrentPrice() + "\r\n" + " " + "Gain/Loss: "
-        + getChangePercent() * 100 + "%";
+    String ans = "";
+    ans += this.name + " " + this.symbol + " " + "Current Price: $ " + getCurrentPrice();
+    ans += "\r\n" + " " + "Gain/Loss: " + getChangePercent() * 100 + "%";
+    return ans;
   }
 }

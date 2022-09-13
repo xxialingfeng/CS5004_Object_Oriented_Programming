@@ -6,14 +6,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * A Junit test class for the Stock class
+ * A Junit test class for the Stock class.
  */
 public class StockTest {
 
   private Stock apple;
 
   /**
-   * Create a stock class
+   * Create a stock class.
    */
   @Before
   public void setUp() {
@@ -22,7 +22,7 @@ public class StockTest {
   }
 
   /**
-   * Test if symbol of stock matches
+   * Test if symbol of stock matches.
    */
   @Test
   public void testSymbol() {
@@ -30,7 +30,7 @@ public class StockTest {
   }
 
   /**
-   * Test if name of stock matches
+   * Test if name of stock matches.
    */
   @Test
   public void testName() {
@@ -38,7 +38,7 @@ public class StockTest {
   }
 
   /**
-   * Test if cost basis matches
+   * Test if cost basis matches.
    */
   @Test
   public void testCostBasis() {
@@ -46,7 +46,7 @@ public class StockTest {
   }
 
   /**
-   * Test if current price matches
+   * Test if current price matches.
    */
   @Test
   public void getCurrentPrice() {
@@ -54,7 +54,7 @@ public class StockTest {
   }
 
   /**
-   * Test if stock can be set new cost basis
+   * Test if stock can be set new cost basis.
    */
   @Test
   public void testSetCostBasis() {
@@ -64,7 +64,7 @@ public class StockTest {
   }
 
   /**
-   * Test if change percent matches
+   * Test if change percent matches.
    */
   @Test
   public void testGetChangePercent() {
@@ -75,13 +75,13 @@ public class StockTest {
   }
 
   /**
-   * Test if to String matches
+   * Test if to String matches.
    */
   @Test
   public void testToString() {
-    Stock stockThree = new Stock("Clothes", "NorthFace", 300);
-    stockThree.setCurrentPrice(450);
-    assertEquals("NorthFace Clothes Current Price: $ 450.0\r\n Gain/Loss: 50.0%", stockThree.toString());
+    Stock stockThree = new Stock("Clothes", "NorthFace", 192.20);
+    stockThree.setCurrentPrice(202.12);
+    assertEquals("NorthFace Clothes Current Price: $ 202.12\r\n Gain/Loss: 5.16%", stockThree.toString());
     assertEquals("Apple Computer Current Price: $ 300.0\r\n Gain/Loss: 50.0%", apple.toString());
   }
 }
