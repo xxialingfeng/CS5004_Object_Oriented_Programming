@@ -81,7 +81,7 @@ public class StockTest {
   public void testToString() {
     Stock stockThree = new Stock("Clothes", "NorthFace", 192.20);
     stockThree.setCurrentPrice(202.12);
-    assertEquals("NorthFace Clothes Current Price: $ 202.12\r\n Gain/Loss: 5.16%", stockThree.toString());
-    assertEquals("Apple Computer Current Price: $ 300.0\r\n Gain/Loss: 50.0%", apple.toString());
+    assertEquals("NorthFace Current Price: $ 202.12\r\n Gain/Loss: 5.16%", stockThree.toString());
+    assertEquals("Apple Current Price: $ 300.0\r\n Gain/Loss: 50.0%", apple.toString());
   }
 }

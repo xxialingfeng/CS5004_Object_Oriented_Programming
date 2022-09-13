@@ -98,7 +98,7 @@ public class Stock {
    */
   public String toString() {
     String ans = "";
-    ans += this.name + " " + this.symbol + " " + "Current Price: $ " + getCurrentPrice();
+    ans += this.name + " " + "Current Price: $ " + getCurrentPrice();
     ans += "\r\n" + " " + "Gain/Loss: " + getChangePercent() * 100 + "%";
     return ans;
   }
