@@ -88,7 +88,7 @@ public class Stock {
     //return ((int)(initial * 10000)) / 10000.0;
     //String str = String.format("%.4f", initial);
     //return Double.parseDouble(str);
-    DecimalFormat df = new DecimalFormat("#.0000");
+    DecimalFormat df = new DecimalFormat("#.00");
     return Double.parseDouble(df.format(initial));
   }
 
@@ -101,8 +101,8 @@ public class Stock {
     String ans = "";
     double initial = 100 * (this.currentPrice - this.costBasis) / this.costBasis;
     DecimalFormat df = new DecimalFormat("#.00");
-    ans += this.name + " " + "Current Price: $ " + getCurrentPrice();
-    ans += "\r\n" + " " + "Gain/Loss: " + df.format(initial) + "%";
+    ans += this.name + " " + "Current Price: $ " + getCurrentPrice() + "\r\n";
+    ans += " " + "Gain/Loss: " + df.format(initial) + "%";
     return ans;
   }
 }
