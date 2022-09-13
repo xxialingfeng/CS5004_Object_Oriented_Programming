@@ -1,12 +1,8 @@
 package stock;
 
-import static java.lang.Math.round;
-
-import java.math.BigDecimal;
-
 /**.
+ * This class represents stock.
  * @author Lingfeng Xia
- * This class represents stock. The stock has its company name, symble, costbasis and current price
  */
 public class Stock {
   private String symbol;
