@@ -83,8 +83,9 @@ public class Stock {
    */
   public double getChangePercent() {
     double initial = (this.currentPrice - this.costBasis) / this.costBasis;
-    String str = String.format("%.4f", initial);
-    return Double.parseDouble(str);
+    return ((int)(initial * 10000)) / 10000.0;
+    //String str = String.format("%.4f", initial);
+    //return Double.parseDouble(str);
   }
 
   /**
