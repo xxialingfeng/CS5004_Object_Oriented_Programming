@@ -45,7 +45,7 @@ public class Paycheck {
       int temp = (int)payment;
       return temp / 100.0;
     }
-    double payment = this.pay * 0.8;
+    double payment = this.pay * 0.85;
     payment = payment * 100;
     int temp = (int)payment;
     return temp / 100.0;
