@@ -47,6 +47,7 @@ public class Paycheck {
     return this.pay * 0.85;
   }
 
+
   /**
    * Return string representing the current payment after taxes are assessed.
    * @return string representing the current payment after taxes are assessed.
