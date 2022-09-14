@@ -40,15 +40,11 @@ public class Paycheck {
    */
   public double getPayAfterTaxes() {
     if (this.pay < 400) {
-      double payment = this.pay * 0.9;
-      payment = payment * 100;
-      int temp = (int)payment;
-      return temp / 100.0;
+      return this.pay * 0.9;
+    } else if (this.pay < 0.01) {
+      return 0.01;
     }
-    double payment = this.pay * 0.85;
-    payment = payment * 100;
-    int temp = (int)payment;
-    return temp / 100.0;
+    return this.pay * 0.8;
   }
 
   /**
