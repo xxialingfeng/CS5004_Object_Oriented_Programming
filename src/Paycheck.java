@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
@@ -38,11 +39,16 @@ public class Paycheck {
    * @return payment after deducting taxes.
    */
   public double getPayAfterTaxes() {
-    DecimalFormat df = new DecimalFormat(".0000");
     if (this.pay < 400) {
-      return Double.parseDouble(df.format(this.pay * 0.9));
+      double payment = this.pay * 0.9;
+      payment = payment * 100;
+      int temp = (int)payment;
+      return temp / 100.0;
     }
-    return Double.parseDouble(df.format(this.pay * 0.85));
+    double payment = this.pay * 0.8;
+    payment = payment * 100;
+    int temp = (int)payment;
+    return temp / 100.0;
   }
 
   /**
