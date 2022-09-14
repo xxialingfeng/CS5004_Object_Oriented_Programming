@@ -55,7 +55,7 @@ public class Paycheck {
    * @return string representing the current payment after taxes are assessed.
    */
   public String toString() {
-    DecimalFormat df = new DecimalFormat(".00");
+    DecimalFormat df = new DecimalFormat("#.00");
     double payAfterTaxes = getPayAfterTaxes();
     return "Payment after taxes: $ " + df.format(payAfterTaxes);
   }
