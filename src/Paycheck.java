@@ -44,7 +44,7 @@ public class Paycheck {
     } else if (this.pay < 0.01) {
       return 0.01;
     }
-    return this.pay * 0.8;
+    return this.pay * 0.85;
   }
 
   /**
