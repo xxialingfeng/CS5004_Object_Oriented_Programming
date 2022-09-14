@@ -38,10 +38,11 @@ public class Paycheck {
    * @return payment after deducting taxes.
    */
   public double getPayAfterTaxes() {
+    DecimalFormat df = new DecimalFormat(".00");
     if (this.pay < 400) {
-      return this.pay * 0.9;
+      return Double.parseDouble(df.format(this.pay * 0.9));
     }
-    return this.pay * 0.85;
+    return Double.parseDouble(df.format(this.pay * 0.85));
   }
 
   /**
@@ -49,7 +50,7 @@ public class Paycheck {
    * @return string representing the current payment after taxes are assessed.
    */
   public String toString() {
-    DecimalFormat df = new DecimalFormat("#.00");
+    DecimalFormat df = new DecimalFormat(".00");
     double payAfterTaxes = getPayAfterTaxes();
     return "Payment after taxes: $ " + df.format(payAfterTaxes);
   }
