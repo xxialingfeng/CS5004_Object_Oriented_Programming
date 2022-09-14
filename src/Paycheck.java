@@ -38,7 +38,7 @@ public class Paycheck {
    * @return payment after deducting taxes.
    */
   public double getPayAfterTaxes() {
-    DecimalFormat df = new DecimalFormat(".00");
+    DecimalFormat df = new DecimalFormat(".0000");
     if (this.pay < 400) {
       return Double.parseDouble(df.format(this.pay * 0.9));
     }
