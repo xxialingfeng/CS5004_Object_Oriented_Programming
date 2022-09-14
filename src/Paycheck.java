@@ -39,7 +39,7 @@ public class Paycheck {
    * @return payment after deducting taxes.
    */
   public double getPayAfterTaxes() {
-    if (this.pay < 400) {
+    if (this.pay > 0.01 && this.pay < 400) {
       return this.pay * 0.9;
     } else if (this.pay < 0.01) {
       return 0.01;
