@@ -42,7 +42,7 @@ public class Paycheck {
     if (this.pay < 400) {
       return Double.parseDouble(df.format(this.pay * 0.9));
     }
-    return Double.parseDouble(df.format(this.pay * 0.8));
+    return Double.parseDouble(df.format(this.pay * 0.85));
   }
 
   /**
