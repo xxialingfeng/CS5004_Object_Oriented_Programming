@@ -57,6 +57,9 @@ public class Paycheck {
   public String toString() {
     DecimalFormat df = new DecimalFormat("#.00");
     double payAfterTaxes = getPayAfterTaxes();
+    if (payAfterTaxes < 1) {
+      return "Payment after taxes: $ 0" + df.format(payAfterTaxes);
+    }
     return "Payment after taxes: $ " + df.format(payAfterTaxes);
   }
 }
