@@ -20,7 +20,7 @@ public class Physics {
     if (elapsedTime < 0) {
       throw new IllegalArgumentException("elapsed time can not be zero or below!");
     }
-    DecimalFormat df = new DecimalFormat("#.0000");
+    DecimalFormat df = new DecimalFormat("#.000");
     Double velocity = one.distanceTo(two) / elapsedTime;
     return Double.parseDouble(df.format(velocity));
   }
