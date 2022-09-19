@@ -86,6 +86,6 @@ public class Point3D {
    * @return a int representing hashcode
    */
   public int hashCode() {
-    return 31 * x + x + 31 * 2 * y + y + 31 * 3 * z + z;
+    return 1;
   }
 }
