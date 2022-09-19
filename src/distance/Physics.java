@@ -15,7 +15,8 @@ public class Physics {
    * @return the velocity of two objects.
    * @throws IllegalArgumentException elapse time can not be zero or lower.
    */
-  public static double velocity(Point3D one, Point3D two, double elapsedTime) throws IllegalArgumentException {
+  public static double velocity(Point3D one, Point3D two, double elapsedTime)
+      throws IllegalArgumentException {
     if (elapsedTime < 0) {
       throw new IllegalArgumentException("elapsed time can not be zero or below!");
     }
@@ -37,7 +38,7 @@ public class Physics {
       System.out.println("Prof. Keith is on the move! His Velocity =" + velocity);
       velocity = Physics.velocity(one, two, 5);
       System.out.println("Velocity =" + velocity);
-    } catch(IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       System.out.println("Encountered an error: " + e.getMessage());
     }
   }

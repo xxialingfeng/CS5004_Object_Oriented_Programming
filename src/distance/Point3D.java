@@ -60,7 +60,9 @@ public class Point3D {
    */
   public double distanceTo(Point3D other) {
     DecimalFormat df = new DecimalFormat("#.00");
-    Double distance = Math.sqrt(((this.x - other.getX()) * (this.x - other.getX())) + ((this.y - other.getY()) * (this.y - other.getY())) + (this.z - other.getZ()) * (this.z - other.getZ()));
+    Double distance = Math.sqrt(((this.x - other.getX()) * (this.x - other.getX()))
+        + ((this.y - other.getY()) * (this.y - other.getY()))
+        + (this.z - other.getZ()) * (this.z - other.getZ()));
     return Double.parseDouble(df.format(distance));
   }
 
