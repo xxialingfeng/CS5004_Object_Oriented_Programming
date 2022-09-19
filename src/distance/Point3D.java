@@ -72,12 +72,6 @@ public class Point3D {
    * @return if this Point3D object is equal to another Point3D object
    */
   public boolean equals(Point3D other) {
-    if (other == null || getClass() != other.getClass()) {
-      return false;
-    }
-    if (this == other) {
-      return true;
-    }
     return this.x == other.getX() && this.y == other.getY() && this.z == other.getZ();
   }
 }
