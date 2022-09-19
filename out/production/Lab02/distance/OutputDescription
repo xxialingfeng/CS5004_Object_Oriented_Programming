@@ -1,0 +1,9 @@
+Initial Output:
+Displacement = 1.73
+Prof. Keith is on the move! His Velocity =0.35
+Encountered an error: For input string: "∞"
+
+Description: Point3D one has the default x, y, z, value: 0, 0, 0. Point3D two has the x, y, z value: 1, 1, 1.
+so the distanceTo method will return the distance of two points, which is 1.73. Then the velocity
+will calculates the velocity of the two points, which is 1.37/5 = 0.35. If the elapsed time changes into 0,
+it will break the illegalArgumentationException, which will encounter an error.
