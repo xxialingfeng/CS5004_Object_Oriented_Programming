@@ -80,12 +80,4 @@ public class Point3D {
     }
     return this.x == other.getX() && this.y == other.getY() && this.z == other.getZ();
   }
-
-  /**.
-   * Override hashCode() method, return a int representing hashcode
-   * @return a int representing hashcode
-   */
-  public int hashCode() {
-    return 1;
-  }
 }
