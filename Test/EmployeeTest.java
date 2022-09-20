@@ -14,7 +14,11 @@ public class EmployeeTest {
   public void addHoursWorked() {
     Employee personA = new Employee("Jeff", "SUPS-111", 3.25);
     personA.addHoursWorked(2.5);
-    assertEquals(personA.getHoursWorked(),2.5,0.000);
+    assertEquals(2.5,personA.getHoursWorked(),0.000);
+    personA.addHoursWorked(-1.5);
+    assertEquals(1.0,personA.getHoursWorked(),0.000);
+    personA.addHoursWorked(-0.1);
+    assertEquals(0.9,personA.getHoursWorked(),0.000);
   }
 
   /**
@@ -25,7 +29,7 @@ public class EmployeeTest {
     Employee personB = new Employee("Zoey", "SUPS-112", 2.6);
     personB.addHoursWorked(3);
     personB.resetHoursWorked();
-    assertEquals(personB.getHoursWorked(), 0, 0.000);
+    assertEquals(0, personB.getHoursWorked(), 0.000);
   }
 
   /**.

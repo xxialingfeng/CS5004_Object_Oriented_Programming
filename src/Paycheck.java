@@ -12,7 +12,7 @@ public class Paycheck {
   private double pay;
   private final int TAX_THRESHOLD = 400;
   private final int HOURS_THRESHOLD = 40;
-  private final double TAX_MIN = 0.1;
+  private final double TAX_MIN = 0.01;
 
   /**
    * Construct a pay check object that has provided pay rate and hours worked.
@@ -25,7 +25,8 @@ public class Paycheck {
     if (this.hoursWorked <= HOURS_THRESHOLD) {
       this.pay = this.payRate * this.hoursWorked;
     } else {
-      this.pay = HOURS_THRESHOLD * this.payRate + (this.hoursWorked - HOURS_THRESHOLD) * 1.5 * this.payRate;
+      this.pay = HOURS_THRESHOLD * this.payRate
+          + (this.hoursWorked - HOURS_THRESHOLD) * 1.5 * this.payRate;
     }
   }
 
