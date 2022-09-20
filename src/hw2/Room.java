@@ -9,10 +9,12 @@ public class Room {
   private final int FAMILY_MAX = 4;
   private double price;
   private int num;
-  private final RoomType room;
+
   enum RoomType {
     SINGLE_ROOM, DOUBLE_ROOM, FAMILY_ROOM;
   }
+
+  private final RoomType room;
 
   /**.
    * This is a constructor representing a hotel room
