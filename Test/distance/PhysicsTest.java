@@ -17,6 +17,6 @@ public class PhysicsTest {
     Point3D one = new Point3D(1,1,1);
     Point3D two = new Point3D(2,2,2);
     double elapsedTime = 5;
-    assertEquals(0.3464, Physics.velocity(one, two, elapsedTime), 0.000);
+    assertEquals(0.3464, Physics.velocity(one, two, elapsedTime), 0.0000);
   }
 }
