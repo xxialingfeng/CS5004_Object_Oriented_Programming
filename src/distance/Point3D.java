@@ -5,6 +5,7 @@ import java.util.Objects;
 /**.
  * This represents a point-3D class
  */
+
 public class Point3D {
   private int x;
   private int y;
@@ -13,9 +14,7 @@ public class Point3D {
   /**.
    * This represents a constructor that takes no parameters
    */
-  public Point3D() {
-
-  }
+  public Point3D() {}
 
   /**
    * This represents a constructor that takes x, y, z as parameters.
