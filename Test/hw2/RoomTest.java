@@ -23,6 +23,21 @@ public class RoomTest {
   }
 
   /**
+   * This test makes sure that if a negative value
+   * for price passed into the constructor the
+   * proper exception is thrown.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRoom() {
+    Room testSingleRoom = new Room(RoomType.SINGLE, -234.1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRoomTwo() {
+    Room testFamilyRoom = new Room(RoomType.FAMILY, -123345.3);
+  }
+
+  /**
    * Test if the room can be booked.
    */
   @Test

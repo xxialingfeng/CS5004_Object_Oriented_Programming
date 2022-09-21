@@ -30,6 +30,6 @@ public class Recipient {
    * @return the information as a given format
    */
   public String toString() {
-    return this.firstName + " " + this.LastName + "\n" + this.email;
+    return this.firstName + " " + this.LastName + " Email:" + this.email;
   }
 }

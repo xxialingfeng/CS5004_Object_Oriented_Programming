@@ -4,6 +4,7 @@ import java.lang.IllegalArgumentException;
 /**
  * This is a mailItem class.
  */
+
 public class MailItem {
 
   public final int width;

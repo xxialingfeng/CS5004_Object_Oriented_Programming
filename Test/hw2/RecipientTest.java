@@ -15,6 +15,6 @@ public class RecipientTest {
   @Test
   public void testToString() {
     Recipient recipientOne = new Recipient("Lingfeng", "Xia", "xia.lin@123.com");
-    assertEquals("Lingfeng Xia\nxia.lin@123.com", recipientOne.toString());
+    assertEquals("Lingfeng Xia Email:xia.lin@123.com", recipientOne.toString());
   }
 }
