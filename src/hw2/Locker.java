@@ -4,6 +4,7 @@ import java.lang.IllegalArgumentException;
 /**
  * This is a Locker class.
  */
+
 public class Locker {
   private final int maxWidth;
   private final int maxHeight;

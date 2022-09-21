@@ -17,4 +17,13 @@ public class RecipientTest {
     Recipient recipientOne = new Recipient("Lingfeng", "Xia", "xia.lin@123.com");
     assertEquals("Lingfeng Xia Email:xia.lin@123.com", recipientOne.toString());
   }
+
+  /**
+   * Test if the constructor will properly raise an IllegalArgumentException.
+   * if any of the necessary fields are empty or null.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRecipient1() {
+    Recipient testRecipient1 = new Recipient("John", "", "");
+  }
 }

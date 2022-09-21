@@ -4,6 +4,7 @@ import java.lang.IllegalArgumentException;
 /**.
  * This is a Room class representing hotel's rooms.
  */
+
 public class Room {
   private int occupancy;
   private double price;
