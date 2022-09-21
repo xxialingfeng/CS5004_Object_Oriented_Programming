@@ -58,7 +58,7 @@ public class Point3D {
    * @return the distance of this point3D object to another Point3D object.
    */
   public double distanceTo(Point3D other) {
-    DecimalFormat df = new DecimalFormat("#.0000");
+    DecimalFormat df = new DecimalFormat("#.000");
     Double distance = Math.sqrt(((this.x - other.getX()) * (this.x - other.getX()))
         + ((this.y - other.getY()) * (this.y - other.getY()))
         + (this.z - other.getZ()) * (this.z - other.getZ()));
