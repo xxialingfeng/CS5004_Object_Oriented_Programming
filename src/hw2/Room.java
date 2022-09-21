@@ -50,13 +50,5 @@ public class Room {
     return this.num;
   }
 
-  /**
-   * Return the price of the room.
-   * @return the price of the room
-   */
-  public double getPrice() {
-    return this.price;
-  }
-
 }
 
