@@ -62,7 +62,8 @@ public class Point3D {
     Double distance = Math.sqrt(((this.x - other.getX()) * (this.x - other.getX()))
         + ((this.y - other.getY()) * (this.y - other.getY()))
         + (this.z - other.getZ()) * (this.z - other.getZ()));
-    return Double.parseDouble(df.format(distance));
+    distance = (int) (distance * 10000) / 10000.0;
+    return distance;
   }
 
   /**.
