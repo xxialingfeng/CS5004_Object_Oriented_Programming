@@ -1,7 +1,7 @@
 package distance;
 
 import java.text.DecimalFormat;
-
+import java.util.Objects;
 /**.
  * This represents a point-3D class
  */
@@ -71,18 +71,20 @@ public class Point3D {
    * @param other A Point3D object
    * @return if this Point3D object is equal to another Point3D object
    */
-  public boolean equals(Point3D other) {
+  @Override
+  public boolean equals(Object other) {
     if (this == other) {
       return true;
     }
     if (other == null || this.getClass() != other.getClass()) {
       return false;
     }
-    return this.x == other.getX() && this.y == other.getY() && this.z == other.getZ();
+    Point3D point = (Point3D) other;
+    return this.x == point.getX() && this.y == point.getY() && this.z == point.getZ();
   }
 
   @Override
   public int hashCode() {
-    return 1;
+    return Objects.hash(x,y,z);
   }
 }
