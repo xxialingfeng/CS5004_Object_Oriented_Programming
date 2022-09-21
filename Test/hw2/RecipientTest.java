@@ -1,6 +1,6 @@
 package hw2;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -15,6 +15,6 @@ public class RecipientTest {
   @Test
   public void testToString() {
     Recipient recipientOne = new Recipient("Lingfeng", "Xia", "xia.lin@123.com");
-    assertEquals("Lingfeng Xia xia.lin@123.com", recipientOne.toString());
+    assertEquals("Lingfeng Xia\nxia.lin@123.com", recipientOne.toString());
   }
 }
