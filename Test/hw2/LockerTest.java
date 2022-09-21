@@ -3,8 +3,8 @@ package hw2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  * This is a test class for locker.
