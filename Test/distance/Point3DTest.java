@@ -55,4 +55,5 @@ public class Point3DTest {
     Point3D pointSeven = new Point3D(7,8,9);
     assertEquals(true, pointSix.equals(pointSeven));
   }
+
 }
