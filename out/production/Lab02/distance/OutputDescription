@@ -1,7 +1,7 @@
 Initial Output:
-Displacement = 1.73
+Displacement = 1.732
 Prof. Keith is on the move! His Velocity =0.35
-Encountered an error: For input string: "∞"
+Encountered an error: elapsed time can not be zero or below!
 
 Description: Point3D one has the default x, y, z, value: 0, 0, 0. Point3D two has the x, y, z value: 1, 1, 1.
 so the distanceTo method will return the distance of two points, which is 1.73. Then the velocity
@@ -9,8 +9,8 @@ will calculates the velocity of the two points, which is 1.37/5 = 0.35. If the e
 it will throw the illegalArgumentationException, which will encounter an error.
 
 Output after swapping:
-Displacement = 1.73
-Encountered an error: For input string: "∞"
+Displacement = 1.732
+Encountered an error: elapsed time can not be zero or below!
 
 Description: After swapping we still get the same displacement, but it will throw illegalArgumentationException
 at the first attempt to calculate the velocity. so the try structure will also break after that and the process will
