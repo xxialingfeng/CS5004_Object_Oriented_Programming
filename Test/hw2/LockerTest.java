@@ -18,6 +18,7 @@ public class LockerTest {
    * Initializes a new valid Locker and MailItem
    * object prior to running each unit test.
    */
+
   @Before
   public void setUp() {
     Locker testLocker1 = new Locker(4, 6, 5);
