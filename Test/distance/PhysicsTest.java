@@ -25,7 +25,7 @@ public class PhysicsTest {
    * properly throws an exception.
    */
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidConstructor1() {
+  public void testInvalidInput() {
     Point3D pointEight = new Point3D(2,2,2);
     Point3D pointNine = new Point3D(4,4,4);
     double elapsedTime = -1;

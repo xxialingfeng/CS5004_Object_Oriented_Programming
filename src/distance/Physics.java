@@ -17,10 +17,10 @@ public class Physics {
    */
   public static double velocity(Point3D one, Point3D two, double elapsedTime)
       throws IllegalArgumentException {
-    if (elapsedTime < 0) {
+    if (elapsedTime <= 0) {
       throw new IllegalArgumentException("elapsed time can not be zero or below!");
     }
-    Double distance = Math.sqrt(((one.getX() - two.getX()) * (one.getX() - two.getX()))
+    double distance = Math.sqrt(((one.getX() - two.getX()) * (one.getX() - two.getX()))
         + ((one.getY() - two.getY()) * (one.getY() - two.getY()))
         + (one.getZ() - two.getZ()) * (one.getZ() - two.getZ()));
     return (int)(distance / elapsedTime * 10000) / 10000.0;
