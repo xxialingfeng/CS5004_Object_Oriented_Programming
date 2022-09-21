@@ -17,7 +17,8 @@ public class MailItem {
    * @param depth the depth of the mailItem.
    * @param recipient the recipient.
    */
-  public MailItem(int width, int height, int depth, Recipient recipient) {
+  public MailItem(int width, int height, int depth, Recipient recipient)
+      throws IllegalArgumentException {
     this.width = width;
     this.height = height;
     this.depth = depth;

@@ -15,7 +15,8 @@ public class Locker {
    * @param maxHeight maximum height.
    * @param maxDepth maximum depth.
    */
-  public Locker(int maxWidth, int maxHeight, int maxDepth) {
+  public Locker(int maxWidth, int maxHeight, int maxDepth)
+      throws IllegalArgumentException {
     this.maxWidth = maxWidth;
     this.maxHeight = maxHeight;
     this.maxDepth = maxDepth;

@@ -4,30 +4,23 @@ package hw2;
  * This is a Room class representing hotel's rooms.
  */
 public class Room {
-  private final int SINGLE_MAX = 1;
-  private final int DOUBLE_MAX = 2;
-  private final int FAMILY_MAX = 4;
+  private int occupancy;
   private double price;
   private int num;
-
-  enum RoomType {
-    SINGLE_ROOM, DOUBLE_ROOM, FAMILY_ROOM;
-  }
-
-  private final RoomType room;
 
   /**.
    * This is a constructor representing a hotel room
    * @param room room type
    * @param price the price of the room
    */
-  public Room(RoomType room, double price) {
-    this.price = price;
+  public Room(RoomType room, double price)
+      throws IllegalArgumentException {
     if (price < 0) {
       throw new IllegalArgumentException("price can not below zero!");
     }
+    this.price = price;
     this.num = 0;
-    this.room = room;
+    this.occupancy = room.getMaxOccupancy();
   }
 
   /**.
@@ -40,24 +33,11 @@ public class Room {
 
   /**.
    * Book a room if meet the conditions
-   * @param num the number of guests assigned to the room
+   * @param numOfGuests the number of guests assigned to the room
    */
-  public void bookRoom(int num) {
-    if (isAvailable() && num > 0) {
-      if (this.room == RoomType.SINGLE_ROOM) {
-        if (num <= SINGLE_MAX) {
-          this.num = num;
-        }
-      } else if (this.room == RoomType.DOUBLE_ROOM) {
-        if (num <= DOUBLE_MAX) {
-          this.num = num;
-        }
-      } else {
-        if (num <= FAMILY_MAX) {
-          this. num = num;
-        }
-      }
-    }
+  public void bookRoom(int numOfGuests) {
+    num = numOfGuests <= occupancy && numOfGuests > 0 && isAvailable()
+        ? numOfGuests : num;
   }
 
   /**.

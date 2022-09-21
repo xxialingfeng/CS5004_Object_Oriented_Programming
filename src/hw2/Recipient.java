@@ -14,7 +14,8 @@ public class Recipient {
    * @param lastName the last name.
    * @param email the email.
    */
-  public Recipient(String firstName, String lastName, String email) {
+  public Recipient(String firstName, String lastName, String email)
+      throws IllegalArgumentException {
     this.firstName = firstName;
     this.LastName = lastName;
     this.email = email;
