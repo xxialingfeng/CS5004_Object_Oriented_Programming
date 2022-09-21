@@ -20,7 +20,10 @@ public class Physics {
     if (elapsedTime < 0) {
       throw new IllegalArgumentException("elapsed time can not be zero or below!");
     }
-    return (int)(one.distanceTo(two) / elapsedTime * 10000) / 10000.0;
+    Double distance = Math.sqrt(((one.getX() - two.getX()) * (one.getX() - two.getX()))
+        + ((one.getY() - two.getY()) * (one.getY() - two.getY()))
+        + (one.getZ() - two.getZ()) * (one.getZ() - two.getZ()));
+    return (int)(distance / elapsedTime * 10000) / 10000.0;
   }
 
   /**.
