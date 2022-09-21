@@ -43,7 +43,7 @@ public class Point3DTest {
   public void distanceToTest() {
     Point3D pointFour = new Point3D(4,5,6);
     Point3D pointFive = new Point3D(1,2,3);
-    assertEquals(5.1962, pointFour.distanceTo(pointFive), 0.0000);
+    assertEquals(5.196, pointFour.distanceTo(pointFive), 0.000);
   }
 
   /**.
