@@ -17,6 +17,9 @@ public class Bishop extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
+    if (this.getRow() == row && this.getColumn() == col) {
+      return false;
+    }
     return super.canMove(row, col) && this.getRow() != row && this.getColumn() != col
         && this.getRow() - row == this.getColumn() - col;
   }

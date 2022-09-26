@@ -19,6 +19,9 @@ public class Knight extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
+    if (this.getRow() == row && this.getColumn() == col) {
+      return false;
+    }
     return super.canMove(row, col) && Math.abs(this.getRow() - row)
         * Math.abs(this.getColumn() - col) == 2 ;
   }
