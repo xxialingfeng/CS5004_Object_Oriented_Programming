@@ -21,18 +21,14 @@ public class King extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
-    int[] newRow = new int[]{1, 0, -1};
-    int[] newCol = new int[]{1, 0, -1};
-    boolean flag = false;
-    for (int j : newRow) {
-      for (int k : newCol) {
-        if (this.row + j  == row && this.col + k == col) {
-          flag = true;
-          break;
-        }
-      }
-    }
-    return flag && super.canMove(row, col);
+    return super.canMove(row, col) && ((row == this.row + 1 && col == this.col)
+        || (row == this.row - 1 && col == this.col)
+        || (row == this.row + 1 && col == this.col + 1)
+        || (row == this.row - 1 && col == this.col - 1)
+        || (row == this.row + 1 && col == this.col - 1)
+        || (row == this.row - 1 && col == this.col + 1)
+        || (row == this.row && col == this.col + 1)
+        || (row == this.row && col == this.col - 1));
   }
 
   @Override
