@@ -50,6 +50,6 @@ public abstract class AbstractChessPiece implements ChessPiece {
 
   @Override
   public boolean canKill(ChessPiece piece) {
-    return this.color == piece.getColor();
+    return this.color != piece.getColor();
   }
 }
