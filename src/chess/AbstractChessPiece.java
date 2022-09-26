@@ -34,11 +34,19 @@ public abstract class AbstractChessPiece implements ChessPiece {
     return this.color;
   }
 
-  @Override
-  public boolean canMove(int row, int col) throws IllegalArgumentException {
-    if (row < MIN || row > MAX || col < MIN || col > MAX) {
-      throw new IllegalArgumentException();
+  protected boolean isValid(int n) {
+    return n >= 0 && n <= 7;
+  }
+
+  protected void verifyRowAndColumn(int row, int column) {
+    if (!isValid(row) || !isValid(column)) {
+      throw new IllegalArgumentException("Non-negative number only");
     }
+  }
+
+  @Override
+  public boolean canMove(int row, int col) {
+    verifyRowAndColumn(row, col);
     return true;
   }
 
