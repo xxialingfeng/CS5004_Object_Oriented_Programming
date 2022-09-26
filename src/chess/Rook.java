@@ -12,13 +12,13 @@ public class Rook extends AbstractChessPiece {
    * @param color color of the piece
    */
 
-  public Rook(int row, int col, Color color) throws IllegalArgumentException {
+  public Rook(int row, int col, Color color) {
     super(row, col, color);
   }
 
   @Override
   public boolean canMove(int row, int col) {
-    return this.getRow() == row || this.getColumn() == col;
+    return super.canMove(row, col) && this.getRow() == row || this.getColumn() == col;
   }
 
   @Override

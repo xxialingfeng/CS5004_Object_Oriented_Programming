@@ -35,11 +35,11 @@ public class AbstractChessPiece implements ChessPiece {
   }
 
   @Override
-  public boolean canMove(int row, int col) {
-    if (this.row == row && this.col == col) {
-      return false;
+  public boolean canMove(int row, int col) throws IllegalArgumentException {
+    if (row < MIN || row > MAX || col < MIN || col > MAX) {
+      throw new IllegalArgumentException();
     }
-    return row >= MIN && row <= MAX && col >= MIN && col <= MAX;
+    return true;
   }
 
   @Override
