@@ -11,9 +11,7 @@ public abstract class AbstractChessPiece implements ChessPiece {
   private final int MAX = 7;
 
   protected AbstractChessPiece(int row, int col, Color color) throws IllegalArgumentException {
-    if (row < MIN || row > MAX || col < MIN || col > MAX) {
-      throw new IllegalArgumentException();
-    }
+    verifyRowAndColumn(row, col);
     this.row = row;
     this.col = col;
     this.color = color;
@@ -40,14 +38,14 @@ public abstract class AbstractChessPiece implements ChessPiece {
 
   protected void verifyRowAndColumn(int row, int column) {
     if (!isValid(row) || !isValid(column)) {
-      throw new IllegalArgumentException("Non-negative number only");
+      throw new IllegalArgumentException();
     }
   }
 
   @Override
-  public boolean canMove(int row, int col) {
+  public boolean canMove(int row, int col) throws IllegalArgumentException {
     verifyRowAndColumn(row, col);
-    return true;
+    return this.row != row || this.col != col;
   }
 
   @Override

@@ -22,7 +22,9 @@ public class Queen extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
-    return super.canMove(row, col) && (rook.canMove(row, col) || bishop.canMove(row, col));
+    return super.canMove(row, col) && ((this.getRow() != row && this.getColumn() != col
+        && this.getRow() - row == this.getColumn() - col)
+        || (this.getRow() == row || this.getColumn() == col));
   }
 
   @Override
