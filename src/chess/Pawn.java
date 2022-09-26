@@ -16,13 +16,10 @@ public class Pawn extends AbstractChessPiece {
 
   protected Pawn(int row, int col, Color color) throws IllegalArgumentException {
     super(row, col, color);
-    verifyRowAndColumn(row, col);
-  }
-
-  protected void verifyRowAndColumn(int row, int column) {
     if (row < START_WHITE || row > START_BLACK) {
       throw new IllegalArgumentException();
     }
+    verifyRowAndColumn(row, col);
   }
 
   @Override
