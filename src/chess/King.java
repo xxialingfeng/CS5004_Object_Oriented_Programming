@@ -21,8 +21,9 @@ public class King extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
-    double distance = Math.sqrt((row - this.row) * (row - this.row) + (col - this.col) * (col - this.col));
-    return super.canMove(row, col) && (distance == 1.0 || distance == Math.sqrt(2));
+    double distance = Math.sqrt((row - this.row)
+        * (row - this.row) + (col - this.col) * (col - this.col));
+    return super.canMove(row, col) && distance <= Math.sqrt(2);
   }
 
   @Override
