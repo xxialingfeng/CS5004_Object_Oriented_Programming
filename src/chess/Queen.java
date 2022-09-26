@@ -16,12 +16,13 @@ public class Queen extends AbstractChessPiece {
 
   public Queen(int row, int col, Color color) {
     super(row, col, color);
+    this.rook = new Rook(row, col, color);
+    this.bishop = new Bishop(row, col, color);
   }
 
   @Override
   public boolean canMove(int row, int col) {
-    return super.canMove(row, col) && this.getRow() == row || this.getColumn() == col
-        || this.getRow() - row == this.getColumn() - col;
+    return super.canMove(row, col) && (rook.canMove(row, col) || bishop.canMove(row, col));
   }
 
   @Override
