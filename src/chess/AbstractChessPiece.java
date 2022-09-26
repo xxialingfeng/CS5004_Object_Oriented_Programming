@@ -36,6 +36,9 @@ public class AbstractChessPiece implements ChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
+    if (this.row == row && this.col == col) {
+      return false;
+    }
     return row >= MIN && row <= MAX && col >= MIN && col <= MAX;
   }
 
