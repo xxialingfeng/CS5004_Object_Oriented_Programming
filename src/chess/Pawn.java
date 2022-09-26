@@ -45,6 +45,9 @@ public class Pawn implements ChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
+    if (this.row == row && this.col == col) {
+      return false;
+    }
     if (this.getColor().equals(Color.WHITE)) {
       if (this.getRow() == START_WHITE) {
         return (this.getRow() + 1 == row && this.getColumn() == col)
