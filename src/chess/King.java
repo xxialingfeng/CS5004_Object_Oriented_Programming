@@ -26,7 +26,7 @@ public class King extends AbstractChessPiece {
     boolean flag = false;
     for (int j : newRow) {
       for (int k : newCol) {
-        if (row == this.row + newRow[j] && col == this.col + newCol[k]) {
+        if (row == this.row + j && col == this.col + k) {
           flag = true;
           break;
         }
