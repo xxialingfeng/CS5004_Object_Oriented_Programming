@@ -4,8 +4,6 @@ package chess;
  * This is a Queen class representing queen piece.
  */
 public class Queen extends AbstractChessPiece {
-  private Rook rook;
-  private Bishop bishop;
 
   /**
    * This is a constructor that takes row, col, and color as parameters.
@@ -16,8 +14,6 @@ public class Queen extends AbstractChessPiece {
 
   public Queen(int row, int col, Color color) {
     super(row, col, color);
-    this.rook = new Rook(row, col, color);
-    this.bishop = new Bishop(row, col, color);
   }
 
   @Override
