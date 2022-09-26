@@ -3,12 +3,7 @@ package chess;
 /**
  * This is a Pawn class representing pawn piece.
  */
-public class Pawn implements ChessPiece {
-  private int row;
-  private int col;
-  private Color color;
-  private final int BORDER_MIN = 0;
-  private final int BORDER_MAX = 7;
+public class Pawn extends AbstractChessPiece {
   private final int START_WHITE = 1;
   private final int START_BLACK = 6;
 
@@ -19,33 +14,20 @@ public class Pawn implements ChessPiece {
    * @param color color of the piece
    */
 
-  protected Pawn(int row, int col, Color color) throws IllegalArgumentException {
-    if (row < START_WHITE || row > START_BLACK || col < BORDER_MIN || col > BORDER_MAX) {
+  protected Pawn(int row, int col, Color color) {
+    super(row, col, color);
+    verifyRowAndColumn(row, col);
+  }
+
+  protected void verifyRowAndColumn(int row, int column) {
+    if (row < START_WHITE || row > START_BLACK) {
       throw new IllegalArgumentException();
     }
-    this.row = row;
-    this.col = col;
-    this.color = color;
-  }
-
-  @Override
-  public int getRow() {
-    return this.row;
-  }
-
-  @Override
-  public int getColumn() {
-    return this.col;
-  }
-
-  @Override
-  public Color getColor() {
-    return this.color;
   }
 
   @Override
   public boolean canMove(int row, int col) {
-    if (this.row == row && this.col == col) {
+    if (this.getRow() == row && this.getColumn() == col) {
       return false;
     }
     if (this.getColor().equals(Color.WHITE)) {
@@ -66,10 +48,10 @@ public class Pawn implements ChessPiece {
   @Override
   public boolean canKill(ChessPiece piece) {
     if (this.getColor().equals(Color.WHITE)) {
-      return this.getColor() != piece.getColor()  && piece.getRow() - this.getRow() == 1
+      return super.canKill(piece) && piece.getRow() - this.getRow() == 1
           && Math.abs(this.getColumn() - piece.getColumn()) == 1;
     }
-    return this.getColor() != piece.getColor() && piece.getRow() - this.getRow() == -1
+    return super.canKill(piece) && piece.getRow() - this.getRow() == -1
         && Math.abs(this.getColumn() - piece.getColumn()) == 1;
   }
 }
