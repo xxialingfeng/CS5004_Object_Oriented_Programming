@@ -14,7 +14,7 @@ public class Pawn extends AbstractChessPiece {
    * @param color color of the piece
    */
 
-  protected Pawn(int row, int col, Color color) {
+  protected Pawn(int row, int col, Color color) throws IllegalArgumentException {
     super(row, col, color);
     verifyRowAndColumn(row, col);
   }
