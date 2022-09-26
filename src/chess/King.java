@@ -4,9 +4,6 @@ package chess;
  * This is a King class representing king piece.
  */
 public class King extends AbstractChessPiece {
-  private int row;
-  private int col;
-  private Color color;
 
   /**
    * This is a constructor that takes row, col, and color as parameters.
@@ -21,8 +18,8 @@ public class King extends AbstractChessPiece {
 
   @Override
   public boolean canMove(int row, int col) {
-    double distance = Math.sqrt((row - this.row)
-        * (row - this.row) + (col - this.col) * (col - this.col));
+    double distance = Math.sqrt((row - this.getRow())
+        * (row - this.getRow()) + (col - this.getColumn()) * (col - this.getColumn()));
     return super.canMove(row, col) && distance <= Math.sqrt(2);
   }
 
