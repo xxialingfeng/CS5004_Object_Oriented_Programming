@@ -37,6 +37,11 @@ public class Pawn extends AbstractChessPiece {
 
   @Override
   public boolean canKill(ChessPiece piece) {
-    return super.canKill(piece) && canMove(piece.getRow(), piece.getColumn());
+    if (this.getColor().equals(Color.WHITE)) {
+      return super.canKill(piece) && piece.getRow() - this.getRow() == 1
+          && Math.abs(this.getColumn() - piece.getColumn()) == 1;
+    }
+    return super.canKill(piece) && piece.getRow() - this.getRow() == -1
+        && Math.abs(this.getColumn() - piece.getColumn()) == 1;
   }
 }
