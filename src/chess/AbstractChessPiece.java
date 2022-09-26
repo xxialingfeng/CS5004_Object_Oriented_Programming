@@ -3,7 +3,7 @@ package chess;
 /**
  * This is a abstract chess piece class that has general information about the piece.
  */
-public class AbstractChessPiece implements ChessPiece {
+public abstract class AbstractChessPiece implements ChessPiece {
   private int row;
   private int col;
   private Color color;
