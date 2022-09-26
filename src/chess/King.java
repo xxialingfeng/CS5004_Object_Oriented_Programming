@@ -24,10 +24,11 @@ public class King extends AbstractChessPiece {
     int[] newRow = new int[]{1, 0, -1};
     int[] newCol = new int[]{1, 0, -1};
     boolean flag = false;
-    for (int i = 0; i < newRow.length; i++) {
-      for (int j = 0; j < newCol.length; j++) {
-        if (row == this.row + newRow[i] && col == this.col + newCol[j]) {
+    for (int j : newRow) {
+      for (int k : newCol) {
+        if (row == this.row + newRow[j] && col == this.col + newCol[k]) {
           flag = true;
+          break;
         }
       }
     }
