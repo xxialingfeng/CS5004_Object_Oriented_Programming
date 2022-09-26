@@ -7,8 +7,8 @@ public class Pawn implements ChessPiece {
   private int row;
   private int col;
   private Color color;
-  private final int MIN = 0;
-  private final int MAX = 7;
+  private final int BORDER_MIN = 0;
+  private final int BORDER_MAX = 7;
   private final int START_WHITE = 1;
   private final int START_BLACK = 6;
 
@@ -20,7 +20,7 @@ public class Pawn implements ChessPiece {
    */
 
   protected Pawn(int row, int col, Color color) throws IllegalArgumentException {
-    if (row < START_WHITE || row > START_BLACK || col < MIN || col > MAX) {
+    if (row < START_WHITE || row > START_BLACK || col < BORDER_MIN || col > BORDER_MAX) {
       throw new IllegalArgumentException();
     }
     this.row = row;
