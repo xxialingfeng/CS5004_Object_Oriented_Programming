@@ -9,6 +9,7 @@ public class Locker {
   private final int maxWidth;
   private final int maxHeight;
   private final int maxDepth;
+  private final int THRESHOLD = 1;
   MailItem item;
 
   /**
@@ -23,7 +24,7 @@ public class Locker {
     this.maxHeight = maxHeight;
     this.maxDepth = maxDepth;
     this.item = null;
-    if (maxWidth < 1 || maxHeight < 1 || maxDepth < 1) {
+    if (maxWidth < THRESHOLD || maxHeight < THRESHOLD || maxDepth < THRESHOLD) {
       throw new IllegalArgumentException();
     }
   }
