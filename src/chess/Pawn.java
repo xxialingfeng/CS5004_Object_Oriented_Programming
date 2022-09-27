@@ -31,7 +31,7 @@ public class Pawn extends AbstractChessPiece {
     }
     if (this.getColor().equals(Color.WHITE)) {
       if (this.getRow() == START_WHITE) {
-        return (this.getRow() +MOVE_ONE == row && this.getColumn() == col)
+        return (this.getRow() + MOVE_ONE == row && this.getColumn() == col)
             || (this.getRow() + MOVE_TWO == row && this.getColumn() == col);
       }
       return this.getRow() + MOVE_ONE == row && this.getColumn() == col;
