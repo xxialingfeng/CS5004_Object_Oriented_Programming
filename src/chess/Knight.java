@@ -4,7 +4,7 @@ package chess;
  * This is a Knight class representing knight piece.
  */
 public class Knight extends AbstractChessPiece {
-
+  private static final int CHANGE_OF_SPACE = 2;
   /**
    * This is a constructor that takes row, col, and color as parameters.
    * @param row row pos of the piece
@@ -23,7 +23,7 @@ public class Knight extends AbstractChessPiece {
       return false;
     }
     return super.canMove(row, col) && Math.abs(this.getRow() - row)
-        * Math.abs(this.getColumn() - col) == 2 ;
+        * Math.abs(this.getColumn() - col) == CHANGE_OF_SPACE ;
   }
 
   @Override

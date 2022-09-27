@@ -4,9 +4,9 @@ package chess;
  * This is a abstract chess piece class that has general information about the piece.
  */
 public abstract class AbstractChessPiece implements ChessPiece {
-  private int row;
-  private int col;
-  private Color color;
+  private final int row;
+  private final int col;
+  private final Color color;
   private final int MIN = 0;
   private final int MAX = 7;
 
@@ -33,11 +33,11 @@ public abstract class AbstractChessPiece implements ChessPiece {
   }
 
   protected boolean isValid(int n) {
-    return n >= 0 && n <= 7;
+    return n < 0 || n > 7;
   }
 
   protected void verifyRowAndColumn(int row, int column) {
-    if (!isValid(row) || !isValid(column)) {
+    if (isValid(row) || isValid(column)) {
       throw new IllegalArgumentException();
     }
   }

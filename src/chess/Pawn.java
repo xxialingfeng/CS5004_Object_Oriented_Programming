@@ -4,8 +4,10 @@ package chess;
  * This is a Pawn class representing pawn piece.
  */
 public class Pawn extends AbstractChessPiece {
-  private final int START_WHITE = 1;
-  private final int START_BLACK = 6;
+  private static final int START_WHITE = 1;
+  private static final int START_BLACK = 6;
+  private static final int MOVE_ONE = 1;
+  private static final int MOVE_TWO = 2;
 
   /**
    * This is a constructor that takes row, col, and color as parameters.
@@ -29,26 +31,26 @@ public class Pawn extends AbstractChessPiece {
     }
     if (this.getColor().equals(Color.WHITE)) {
       if (this.getRow() == START_WHITE) {
-        return (this.getRow() + 1 == row && this.getColumn() == col)
-            || (this.getRow() + 2 == row && this.getColumn() == col);
+        return (this.getRow() +MOVE_ONE == row && this.getColumn() == col)
+            || (this.getRow() + MOVE_TWO == row && this.getColumn() == col);
       }
-      return this.getRow() + 1 == row && this.getColumn() == col;
+      return this.getRow() + MOVE_ONE == row && this.getColumn() == col;
     } else {
       if (this.getRow() == START_BLACK) {
-        return (this.getRow() - 1 == row && this.getColumn() == col)
-            || (this.getRow() - 2 == row && this.getColumn() == col);
+        return (this.getRow() - MOVE_ONE == row && this.getColumn() == col)
+            || (this.getRow() - MOVE_TWO == row && this.getColumn() == col);
       }
-      return this.getRow() - 1 == row && this.getColumn() == col;
+      return this.getRow() - MOVE_ONE == row && this.getColumn() == col;
     }
   }
 
   @Override
   public boolean canKill(ChessPiece piece) {
     if (this.getColor().equals(Color.WHITE)) {
-      return super.canKill(piece) && piece.getRow() - this.getRow() == 1
-          && Math.abs(this.getColumn() - piece.getColumn()) == 1;
+      return super.canKill(piece) && piece.getRow() - this.getRow() == MOVE_ONE
+          && Math.abs(this.getColumn() - piece.getColumn()) == MOVE_ONE;
     }
-    return super.canKill(piece) && piece.getRow() - this.getRow() == -1
-        && Math.abs(this.getColumn() - piece.getColumn()) == 1;
+    return super.canKill(piece) && piece.getRow() - this.getRow() == MOVE_ONE * -1
+        && Math.abs(this.getColumn() - piece.getColumn()) == MOVE_ONE;
   }
 }
