@@ -1,3 +1,5 @@
+package hw2;
+
 import java.lang.IllegalArgumentException;
 /**
  * This is a Locker class.
