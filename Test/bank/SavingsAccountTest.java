@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This is a test class for savings account.
+ */
 public class SavingsAccountTest {
   private SavingsAccount saving1;
 
