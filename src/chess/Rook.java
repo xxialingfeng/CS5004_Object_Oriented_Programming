@@ -16,6 +16,14 @@ public class Rook extends AbstractChessPiece {
     super(row, col, color);
   }
 
+  /**
+   * This is a canMove method for Rook.
+   * A rook can move horizontally or vertically.
+   *
+   * @param row row of the position.
+   * @param col column of the position.
+   * @return true if it can move to the place.
+   */
   @Override
   public boolean canMove(int row, int col) {
     if (this.getRow() == row && this.getColumn() == col) {
@@ -24,6 +32,11 @@ public class Rook extends AbstractChessPiece {
     return super.canMove(row, col) && this.getRow() == row || this.getColumn() == col;
   }
 
+  /**
+   * This is a override method for rook.
+   * @param piece ChessPiece
+   * @return can kill the piece at given pos.
+   */
   @Override
   public boolean canKill(ChessPiece piece) {
     return super.canKill(piece) && canMove(piece.getRow(), piece.getColumn());

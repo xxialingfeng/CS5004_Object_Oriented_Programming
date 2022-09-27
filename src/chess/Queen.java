@@ -16,6 +16,14 @@ public class Queen extends AbstractChessPiece {
     super(row, col, color);
   }
 
+  /**
+   * This is a canMove method for queen.
+   * A queen can move horizontally, vertically and diagonally.
+   *
+   * @param row row of the position.
+   * @param col column of the position.
+   * @return true if the queen can move to the place.
+   */
   @Override
   public boolean canMove(int row, int col) {
     if (this.getRow() == row && this.getColumn() == col) {
@@ -26,6 +34,11 @@ public class Queen extends AbstractChessPiece {
         || (this.getRow() == row || this.getColumn() == col));
   }
 
+  /**
+   * This is a override method for queen.
+   * @param piece ChessPiece
+   * @return can kill the piece at given pos.
+   */
   @Override
   public boolean canKill(ChessPiece piece) {
     return super.canKill(piece) && canMove(piece.getRow(), piece.getColumn());

@@ -15,6 +15,13 @@ public class Bishop extends AbstractChessPiece {
     super(row, col, color);
   }
 
+  /**
+   * This is a canMove method for bishop.
+   *  A bishop can only move diagonally.
+   *     @param row row of the position.
+   *     @param col column of the position.
+   *     @return true if it can move to the place.
+   */
   @Override
   public boolean canMove(int row, int col) {
     if (this.getRow() == row && this.getColumn() == col) {
@@ -24,6 +31,11 @@ public class Bishop extends AbstractChessPiece {
         && this.getRow() - row == this.getColumn() - col;
   }
 
+  /**
+   * This is a override method for bishop.
+   * @param piece ChessPiece
+   * @return can kill the piece at given pos.
+   */
   @Override
   public boolean canKill(ChessPiece piece) {
     return super.canKill(piece) && canMove(piece.getRow(), piece.getColumn());

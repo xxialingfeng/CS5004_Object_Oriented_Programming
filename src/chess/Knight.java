@@ -16,7 +16,14 @@ public class Knight extends AbstractChessPiece {
     super(row, col, color);
   }
 
-
+  /**
+   * This is a canMove method for Knight.
+   *  A knight can move only in an L pattern:
+   *  two cells horizontally and one vertically or vice versa.
+   *     @param row row of the position.
+   *     @param col column of the position.
+   *     @return true if it can move to the place.
+   */
   @Override
   public boolean canMove(int row, int col) {
     if (this.getRow() == row && this.getColumn() == col) {
@@ -26,6 +33,12 @@ public class Knight extends AbstractChessPiece {
         * Math.abs(this.getColumn() - col) == CHANGE_OF_SPACE ;
   }
 
+  /**
+   * This is a canKill method for Knight.
+   * It can kill any opponent’s piece if it can move to its place.
+   *     @param piece Another ChessPiece object.
+   *     @return true if it can move to the place and piece has different color than queen.
+   */
   @Override
   public boolean canKill(ChessPiece piece) {
     return super.canKill(piece) && canMove(piece.getRow(), piece.getColumn());

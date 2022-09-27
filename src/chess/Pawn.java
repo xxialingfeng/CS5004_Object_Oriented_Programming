@@ -24,6 +24,14 @@ public class Pawn extends AbstractChessPiece {
     verifyRowAndColumn(row, col);
   }
 
+  /**
+   * This is a canMove method for Pawn.
+   *   It can move only one place forward in its own column,
+   *   except for the first step, it can move up to 2 steps.
+   *     @param row row of the position.
+   *     @param col column of the position.
+   *     @return true if it can move to the place.
+   */
   @Override
   public boolean canMove(int row, int col) {
     if (this.getRow() == row && this.getColumn() == col) {
@@ -44,6 +52,12 @@ public class Pawn extends AbstractChessPiece {
     }
   }
 
+  /**
+   * This is a canKill method for Pawn.
+   * to kill it must move one place forward diagonally
+   *     @param piece Another ChessPiece object.
+   *     @return true if it can move diagonally and piece has different color than queen.
+   */
   @Override
   public boolean canKill(ChessPiece piece) {
     if (this.getColor().equals(Color.WHITE)) {
