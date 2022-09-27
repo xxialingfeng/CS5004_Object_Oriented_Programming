@@ -1,5 +1,3 @@
-package hw2;
-
 import java.lang.IllegalArgumentException;
 /**
  * This is a Locker class.
@@ -9,8 +7,8 @@ public class Locker {
   private final int maxWidth;
   private final int maxHeight;
   private final int maxDepth;
-  private final int THRESHOLD = 1;
-  MailItem item;
+  private static final int THRESHOLD = 1;
+  private MailItem item;
 
   /**
    * This is a constructor that takes maxWidth, maxHeight, and maxDepth as parameters.
@@ -34,8 +32,8 @@ public class Locker {
    * @param mailItem the mail item
    */
   public void addMail(MailItem mailItem) {
-    if (this.item == null && mailItem.width <= this.maxWidth && mailItem.height <= this.maxHeight
-        && mailItem.depth <= this.maxDepth) {
+    if (this.item == null && mailItem.getWidth() <= this.maxWidth && mailItem.getHeight() <= this.maxHeight
+        && mailItem.getDepth() <= this.maxDepth) {
       this.item = mailItem;
     }
   }
@@ -46,7 +44,7 @@ public class Locker {
    * @return the mail item if can get the item from the locker.
    */
   public MailItem pickupMail(Recipient recipient) {
-    if (this.item != null && this.item.recipient.equals(recipient)) {
+    if (this.item != null && this.item.getRecipient().equals(recipient)) {
       MailItem pickup = this.item;
       this.item = null;
       return pickup;

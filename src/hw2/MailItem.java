@@ -1,5 +1,3 @@
-package hw2;
-
 import java.lang.IllegalArgumentException;
 /**
  * This is a mailItem class.
@@ -7,11 +5,35 @@ import java.lang.IllegalArgumentException;
 
 public class MailItem {
 
-  public final int width;
-  public final int height;
-  public final int depth;
-  private final int THRESHOLD = 1;
-  Recipient recipient;
+  private final int width;
+  private final int height;
+  private final int depth;
+  private static final int THRESHOLD = 1;
+  private final Recipient recipient;
+
+  /**
+   * Get width.
+   * @return width
+   */
+  public int getWidth() {
+    return this.width;
+  }
+
+  /**
+   * Return height.
+   * @return height
+   */
+  public int getHeight() {
+    return this.height;
+  }
+
+  /**
+   * Get depth.
+   * @return depth
+   */
+  public int getDepth() {
+    return this.depth;
+  }
 
   /**
    * A constructor takes width, height, depth and recipient as parameters.
