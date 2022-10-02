@@ -3,7 +3,7 @@ package employee;
 /**
  * This is a salaried pay check class that extends Paycheck.
  */
-public class SalariedAbstractPaycheck extends AbstractPaycheck {
+public class SalariedPaycheck extends AbstractPaycheck {
   private final int THRESHOLD = 0;
   private int payInterval;
   private double payRate;
@@ -15,7 +15,7 @@ public class SalariedAbstractPaycheck extends AbstractPaycheck {
    * @param payInterval pay interval
    * @throws IllegalArgumentException " "
    */
-  SalariedAbstractPaycheck(double payRate, int payInterval) throws IllegalArgumentException {
+  public SalariedPaycheck(double payRate, int payInterval) throws IllegalArgumentException {
     super(payRate);
     if (payRate < THRESHOLD || payInterval < THRESHOLD) {
       throw new IllegalArgumentException();
@@ -24,8 +24,20 @@ public class SalariedAbstractPaycheck extends AbstractPaycheck {
     this.payInterval = payInterval;
   }
 
+  /**
+   * Get total pay.
+   * @return total pay
+   */
   @Override
   public double getTotalPay() {
     return this.payInterval * this.payRate / Week;
+  }
+
+  /**
+   * Return pay interval.
+   * @return pay interval
+   */
+  public int getPayInterval() {
+    return this.payInterval;
   }
 }

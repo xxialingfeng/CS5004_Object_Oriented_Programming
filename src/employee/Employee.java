@@ -23,7 +23,7 @@ public class Employee {
    * @param payInterval pay interval
    * @param isManager if the employee is manager
    */
-  Employee(String name, String id, double payRate, int payInterval, boolean isManager )
+  public Employee(String name, String id, double payRate, int payInterval, boolean isManager )
       throws IllegalArgumentException {
     if (name == null || id == null || name.length() == THRESHOLD
         || id.length() == THRESHOLD || payRate < THRESHOLD) {
@@ -37,7 +37,7 @@ public class Employee {
     this.payRate = payRate;
     this.payInterval = payInterval;
     this.isManager = isManager;
-    this.paycheck = new SalariedAbstractPaycheck(payRate, payInterval);
+    this.paycheck = new SalariedPaycheck(payRate, payInterval);
   }
 
   /**
@@ -47,7 +47,7 @@ public class Employee {
    * @param payRate pay rate of the employee
    * @param hoursWorked how many hours the employee has worked.
    */
-  Employee(String name, String id, double payRate, double hoursWorked)
+  public Employee(String name, String id, double payRate, double hoursWorked)
       throws IllegalArgumentException {
     if (name == null || id == null || name.length() == THRESHOLD
         || id.length() == THRESHOLD || payRate < THRESHOLD || hoursWorked < THRESHOLD) {
@@ -57,7 +57,7 @@ public class Employee {
     this.id = id;
     this.payRate = payRate;
     this.hoursWorked = hoursWorked;
-    this.paycheck = new HourlyAbstractPaycheck(payRate, hoursWorked);
+    this.paycheck = new HourlyPaycheck(payRate, hoursWorked);
   }
 
   /**
