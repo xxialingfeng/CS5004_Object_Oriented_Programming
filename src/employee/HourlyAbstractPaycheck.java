@@ -3,7 +3,7 @@ package employee;
 /**
  * This is a hourly pay check class that extends Paycheck.
  */
-public class HourlyPaycheck extends Paycheck {
+public class HourlyAbstractPaycheck extends AbstractPaycheck {
   private final int THRESHOLD = 0;
   private final double coefficient = 1.5;
   private final int hourThreshold = 40;
@@ -15,7 +15,7 @@ public class HourlyPaycheck extends Paycheck {
    * @param hoursWorked how many hours word.
    * @throws IllegalArgumentException " "
    */
-  HourlyPaycheck(double payRate, double hoursWorked) throws IllegalArgumentException {
+  HourlyAbstractPaycheck(double payRate, double hoursWorked) throws IllegalArgumentException {
     super(payRate);
     if (payRate < THRESHOLD || hoursWorked < THRESHOLD) {
       throw new IllegalArgumentException();

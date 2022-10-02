@@ -3,7 +3,7 @@ package employee;
 /**
  * This is a salaried pay check class that extends Paycheck.
  */
-public class SalariedPaycheck extends Paycheck {
+public class SalariedAbstractPaycheck extends AbstractPaycheck {
   private final int THRESHOLD = 0;
   private int payInterval;
   private double payRate;
@@ -15,7 +15,7 @@ public class SalariedPaycheck extends Paycheck {
    * @param payInterval pay interval
    * @throws IllegalArgumentException " "
    */
-  SalariedPaycheck(double payRate, int payInterval) throws IllegalArgumentException {
+  SalariedAbstractPaycheck(double payRate, int payInterval) throws IllegalArgumentException {
     super(payRate);
     if (payRate < THRESHOLD || payInterval < THRESHOLD) {
       throw new IllegalArgumentException();

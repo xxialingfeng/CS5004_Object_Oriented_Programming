@@ -37,7 +37,7 @@ public class Employee {
     this.payRate = payRate;
     this.payInterval = payInterval;
     this.isManager = isManager;
-    this.paycheck = new SalariedPaycheck(payRate, payInterval);
+    this.paycheck = new SalariedAbstractPaycheck(payRate, payInterval);
   }
 
   /**
@@ -57,7 +57,7 @@ public class Employee {
     this.id = id;
     this.payRate = payRate;
     this.hoursWorked = hoursWorked;
-    this.paycheck = new HourlyPaycheck(payRate, hoursWorked);
+    this.paycheck = new HourlyAbstractPaycheck(payRate, hoursWorked);
   }
 
   /**

@@ -2,7 +2,10 @@ package employee;
 
 import java.text.DecimalFormat;
 
-abstract public class Paycheck implements IPaycheck {
+/**
+ * This is a abstract paycheck class .
+ */
+abstract public class AbstractPaycheck implements IPaycheck {
 
   private double payRate;
   private final int TAX_THRESHOLD = 400;
@@ -15,7 +18,7 @@ abstract public class Paycheck implements IPaycheck {
    * Construct a pay check object that has provided pay rate and hours worked.
    * @param payRate a rate the company should pay.
    */
-  public Paycheck(double payRate) throws IllegalArgumentException {
+  public AbstractPaycheck(double payRate) throws IllegalArgumentException {
     if (payRate < 0) {
       throw new IllegalArgumentException();
     }
