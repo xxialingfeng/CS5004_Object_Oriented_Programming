@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * This is a abstract paycheck class .
  */
-abstract public class AbstractPaycheck implements IPaycheck {
+public abstract class AbstractPaycheck implements IPaycheck {
 
   private double payRate;
   private final int TAX_THRESHOLD = 400;
