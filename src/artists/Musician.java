@@ -18,21 +18,21 @@ public class Musician implements IArtist  {
    * @param genres genres of the musician
    * @param awards awards received by the musician
    * @param recordingCompany the current recording of the musician
-   * @param lastAlbum the current album of the musician
+   * @param currentAlbum the current album of the musician
    * @throws IllegalArgumentException ""
    */
   public Musician(String name, int age, String[] genres, String[] awards,
-      String recordingCompany, String lastAlbum)
+      String currentAlbum, String recordingCompany)
       throws IllegalArgumentException {
-    if (recordingCompany == null || lastAlbum == null
-        || recordingCompany.length() == 0 || lastAlbum.length() == 0) {
+    if (recordingCompany == null || currentAlbum == null
+        || recordingCompany.length() == 0 || currentAlbum.length() == 0) {
       throw new IllegalArgumentException();
     }
     if (age > 128 || age < 0 || name == null || name.length() == 0) {
       throw new IllegalArgumentException();
     }
     this.recordingCompany = recordingCompany;
-    this.currentAlbum = lastAlbum;
+    this.currentAlbum = currentAlbum;
     this.name = name;
     this.age = age;
     this.genres = genres;
@@ -85,9 +85,26 @@ public class Musician implements IArtist  {
    * @return (String)
    */
   public String toString() {
-    return "My name is " + this.name + "\n" + "My age is " + this.age
-        + "\n" + "I am an MUSICIAN\n" + "I make these types of music: " + this.genres
-        + "\n" + "My current album is: "
-        + this.currentAlbum + "\n" + "My recording company is: " + this.recordingCompany;
+    return "My name is " + this.name + "\n" + "My age is " + this.age + "\n"
+        + "I am an MUSICIAN" + "\n"
+        + "I make these types of music: " + getGenre(this.genres) + "\n"
+        + "My current album is : " + this.currentAlbum + "\n"
+        + "My recording company is: " + this.recordingCompany;
+  }
+
+  /**
+   * Return String in the given format.
+   * @param genre list of string
+   * @return string
+   */
+  public String getGenre(String[] genre) {
+    String str = "[";
+    for (String s : genre) {
+      str += s;
+      str += ", ";
+    }
+    String temp = str.substring(0, str.length() - 2);
+    temp += "]";
+    return temp;
   }
 }

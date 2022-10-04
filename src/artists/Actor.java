@@ -8,7 +8,7 @@ public class Actor implements IArtist  {
   private int age;
   private String[] genres;
   private String[] awards;
-  private String [] movies;
+  private String[] movies;
 
   /**
    * This is a constructor that takes four parameters.
@@ -68,7 +68,25 @@ public class Actor implements IArtist  {
    */
   public String toString() {
     return "My name is " + this.name + "\n" + "My age is " + this.age
-        + "\n" + "I am an ACTOR\n" + "I make these types of movies: " + this.genres
-        + "\n" + "I have acted in these movies: " + this.movies;
+        + "\n" + "I am an ACTOR" + "\n"
+        + "I make these types of movies: " + getGenre(this.genres)
+        + "\n" + "I have acted in these movies: " + getGenre(this.movies);
+
+  }
+
+  /**
+   * Return String in the given format.
+   * @param genre list of string
+   * @return string
+   */
+  public String getGenre(String[] genre) {
+    String str = "[";
+    for (String s : genre) {
+      str += s;
+      str += ", ";
+    }
+    String temp = str.substring(0, str.length() - 2);
+    temp += "]";
+    return temp;
   }
 }
