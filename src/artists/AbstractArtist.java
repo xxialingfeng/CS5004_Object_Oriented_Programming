@@ -5,9 +5,10 @@ import java.util.Arrays;
 /**
  *  AbstractArtist class.
  *  This is the abstract superclass of all Artist concrete classes. It implements the
- *  IArtist interface and serves as the "repository" of reuse code for certain common services.
+ *  IArtist interface and serves as the
+ *  "repository" of reuse code for certain common services.
  */
-public class AbstractArtist implements IArtist {
+public abstract class AbstractArtist implements IArtist {
   private String name;
   private int age;
   private String [] genres;
@@ -15,7 +16,8 @@ public class AbstractArtist implements IArtist {
 
   /**
    * AbstractArtist constructor.
-   * This class cannot be instantiated, but this creation mechanism ensures the superclass
+   * This class cannot be instantiated,
+   * but this creation mechanism ensures the superclass
    * portion of all subclasses is appropriately initialized.
    * @param name : name of the artist.
    * @param age : age of the artist.
@@ -34,7 +36,8 @@ public class AbstractArtist implements IArtist {
   }
 
   /**
-   * This method answers the age of the artist. This is a protected method and not intended to be
+   * This method answers the age of the artist.
+   * This is a protected method and not intended to be
    * used by clients outside of the hierarchy.
    * @return (int)
    */
@@ -43,7 +46,8 @@ public class AbstractArtist implements IArtist {
   }
 
   /**
-   * This method answers the full name of the artist. It is a protected getter for subclass use
+   * This method answers the full name of the artist.
+   * It is a protected getter for subclass use
    * @return (String)
    */
   protected String getName() {
@@ -73,6 +77,7 @@ public class AbstractArtist implements IArtist {
    * Answers the awards earned by the artist.
    * @return (String [])
    */
+  @Override
   public String [] getAwards() {
     return this.awards;
   }
@@ -81,6 +86,7 @@ public class AbstractArtist implements IArtist {
    * This method adds another award to the list of awards won by the artist.
    * @param award (String)
    */
+  @Override
   public void receiveAward(String award) {
     int size = this.awards.length; // get the current size of the array
 
@@ -92,7 +98,8 @@ public class AbstractArtist implements IArtist {
   }
 
   /**
-   * Override of the toString() method that answers the basic information held by the AbstractArtist.
+   * Override of the toString() method that answers
+   * the basic information held by the AbstractArtist.
    * @return (String)
    */
   public String toString() {
