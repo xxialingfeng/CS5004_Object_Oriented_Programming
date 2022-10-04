@@ -64,4 +64,15 @@ public class Poet implements IArtist {
   public String [] getAwards() {
     return this.awards;
   }
+
+  /**
+   * Override of the toString() method that answers
+   * the basic information held by the AbstractArtist.
+   * @return (String)
+   */
+  public String toString() {
+    return "My name is " + this.name + "\n" + "My age is " + this.age
+        + "\n" + "I am an POET\n" + "I make these types of poems: " + this.genres
+        + "\n" + "My publishing company is: " + this.publisher;
+  }
 }

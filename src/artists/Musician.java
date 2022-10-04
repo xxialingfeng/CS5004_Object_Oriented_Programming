@@ -78,4 +78,15 @@ public class Musician implements IArtist  {
   public String [] getAwards() {
     return this.awards;
   }
+
+  /**
+   * Override of the toString() method that answers
+   * the basic information held by the AbstractArtist.
+   * @return (String)
+   */
+  public String toString() {
+    return "My name is " + this.name + "\n" + "My age is " + this.age
+        + "\n" + "I am an MUSICIAN\n" + "I make these types of music: " + this.genres
+        + "\n" + "My recording company is: " + this.recordingCompany;
+  }
 }

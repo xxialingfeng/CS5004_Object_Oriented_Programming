@@ -60,4 +60,15 @@ public class Actor implements IArtist  {
   public String [] getAwards() {
     return this.awards;
   }
+
+  /**
+   * Override of the toString() method that answers
+   * the basic information held by the AbstractArtist.
+   * @return (String)
+   */
+  public String toString() {
+    return "My name is " + this.name + "\n" + "My age is " + this.age
+        + "\n" + "I am an ACTOR\n" + "I make these types of movies: " + this.genres
+        + "\n" + "I have acted in these movies: " + this.movies;
+  }
 }
