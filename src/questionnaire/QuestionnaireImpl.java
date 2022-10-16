@@ -119,15 +119,16 @@ public class QuestionnaireImpl implements Questionnaire {
   @Override
   public Questionnaire filter(Predicate<Question> pq) throws IllegalArgumentException {
     if (pq == null) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("Can't have a null predicate.");
     }
-    Questionnaire newQuestionnaire = new QuestionnaireImpl();
-    for (Question tempQ : ListOfQuestion) {
-      if (pq.test(tempQ)) {
-        newQuestionnaire.addQuestion(tempQ.GetIdentifier(), tempQ.copy());
-      }
-    }
-    return newQuestionnaire;
+
+    Questionnaire filteredQuestions = new QuestionnaireImpl();
+
+    this.ListOfQuestion
+        .stream()
+        .filter(pq)
+        .forEach(u -> filteredQuestions.addQuestion(u.GetIdentifier(), u.copy()));
+    return filteredQuestions;
   }
 
   @Override
