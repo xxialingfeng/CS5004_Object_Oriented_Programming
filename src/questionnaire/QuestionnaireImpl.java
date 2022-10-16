@@ -127,7 +127,7 @@ public class QuestionnaireImpl implements Questionnaire {
     Questionnaire newQuestionnaire = new QuestionnaireImpl();
     for (Question tempQ : ListOfQuestion) {
       if (pq.test(tempQ)) {
-        newQuestionnaire.addQuestion(tempQ.GetIdentifier(), tempQ.copy());
+        newQuestionnaire.addQuestion(tempQ.getPrompt(), tempQ.copy());
       }
     }
     return newQuestionnaire;

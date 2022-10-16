@@ -151,10 +151,8 @@ public class TestQuestionnaire {
     questionnaire.addQuestion("first", shortAnswer);
     questionnaire.addQuestion("second", yesNo);
     Question que1 = new ShortAnswer("How are you", true);
-    que1.AddIdentifier("first");
     Assert.assertEquals(questionnaire.getQuestion(1), que1);
     Question que2 = new YesNo("Do you like Sushi?", false);
-    que2.AddIdentifier("second");
     Assert.assertEquals(questionnaire.getQuestion(2), que2);
 
   }
@@ -197,10 +195,8 @@ public class TestQuestionnaire {
     questionnaire.addQuestion("first", shortAnswer);
     questionnaire.addQuestion("second", yesNo);
     Question que1 = new ShortAnswer("How are you", true);
-    que1.AddIdentifier("first");
     Assert.assertEquals(questionnaire.getQuestion("first"), que1);
     Question que2 = new YesNo("Do you like Sushi?", false);
-    que2.AddIdentifier("second");
     Assert.assertEquals(questionnaire.getQuestion("second"), que2);
   }
 
@@ -218,7 +214,6 @@ public class TestQuestionnaire {
     }
     Assert.assertEquals(1, result.size());
     Question que1 = new ShortAnswer("How are you", true);
-    que1.AddIdentifier("first");
     Assert.assertEquals(que1, result.get(0));
   }
 
@@ -236,10 +231,8 @@ public class TestQuestionnaire {
     }
     Assert.assertEquals(2, result.size());
     Question que2 = new YesNo("Do you like Sushi?", false);
-    que2.AddIdentifier("second");
     Assert.assertEquals(que2, result.get(0));
     Question que3 = new Likert("CS5004 is tedious", false);
-    que3.AddIdentifier("third");
     Assert.assertEquals(que3, result.get(1));
   }
 
