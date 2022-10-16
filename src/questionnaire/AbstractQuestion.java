@@ -1,7 +1,5 @@
 package questionnaire;
 
-import java.util.List;
-
 /**
  * This is an abstract class for Question.
  */
@@ -16,7 +14,7 @@ public class AbstractQuestion implements Question {
    * @param prompt Text of the question.
    * @param isRequired boolean whether the question is required.
    * @throws IllegalArgumentException
-   * If question text is null or empty, throw exception.
+   *     If question text is null or empty, throw exception.
    */
   public AbstractQuestion(String prompt, boolean isRequired) throws IllegalArgumentException {
     if (prompt == null || prompt.equals("")) {
@@ -74,7 +72,7 @@ public class AbstractQuestion implements Question {
    * @return the copy of Question.
    */
   @Override
-  public Question copy() {
+  public Question copy() throws IllegalArgumentException {
     AbstractQuestion copyQuestion = new AbstractQuestion(this.prompt, this.isRequired);
     copyQuestion.answer(this.answer);
     return copyQuestion;

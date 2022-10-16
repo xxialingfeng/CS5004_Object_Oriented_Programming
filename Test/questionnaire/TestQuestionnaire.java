@@ -9,9 +9,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
-
-
 /**
  * This is a Junit test class for QuestionnaireImpl class.
  */

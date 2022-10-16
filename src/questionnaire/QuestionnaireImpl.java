@@ -117,12 +117,12 @@ public class QuestionnaireImpl implements Questionnaire {
   }
 
   @Override
-  public Questionnaire filter(Predicate<Question> pq) {
+  public Questionnaire filter(Predicate<Question> pq) throws IllegalArgumentException {
     if (ListOfQuestion == null || ListOfQuestion.isEmpty()) {
-      throw new IllegalArgumentException("Questionnaire is empty!");
+      throw new IllegalArgumentException();
     }
     if (pq == null) {
-      throw new IllegalArgumentException("Predicate is invalid");
+      throw new IllegalArgumentException();
     }
     Questionnaire newQuestionnaire = new QuestionnaireImpl();
     for (Question tempQ : ListOfQuestion) {
