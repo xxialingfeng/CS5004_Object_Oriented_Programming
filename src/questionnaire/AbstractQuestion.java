@@ -81,4 +81,14 @@ public class AbstractQuestion implements Question {
     return copyQuestion;
   }
 
+
+  @Override
+  public void AddIdentifier(String identifier) {
+    this.identifier = identifier;
+  }
+
+  @Override
+  public String GetIdentifier() {
+    return this.identifier;
+  }
 }

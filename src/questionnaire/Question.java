@@ -36,4 +36,16 @@ public interface Question {
    * @return copy of the question including all its data
    */
   Question copy();
+
+  /**
+   * This is an addIdentifier method.
+   *     @param identifier string.
+   */
+  void AddIdentifier(String identifier);
+
+  /**
+   * This is a getter method for identifier.
+   * @return identifier String.
+   */
+  String GetIdentifier();
 }
