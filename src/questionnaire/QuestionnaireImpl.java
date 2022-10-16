@@ -118,16 +118,13 @@ public class QuestionnaireImpl implements Questionnaire {
 
   @Override
   public Questionnaire filter(Predicate<Question> pq) throws IllegalArgumentException {
-    if (ListOfQuestion == null || ListOfQuestion.isEmpty()) {
-      throw new IllegalArgumentException();
-    }
     if (pq == null) {
       throw new IllegalArgumentException();
     }
     Questionnaire newQuestionnaire = new QuestionnaireImpl();
     for (Question tempQ : ListOfQuestion) {
       if (pq.test(tempQ)) {
-        newQuestionnaire.addQuestion(tempQ.getPrompt(), tempQ.copy());
+        newQuestionnaire.addQuestion(tempQ.GetIdentifier(), tempQ.copy());
       }
     }
     return newQuestionnaire;
