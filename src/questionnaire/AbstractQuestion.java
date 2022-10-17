@@ -73,7 +73,12 @@ public class AbstractQuestion implements Question {
    */
   @Override
   public Question copy() throws IllegalArgumentException {
-    return null;
+    AbstractQuestion CopyQuestion = new AbstractQuestion(this.prompt, this.isRequired);
+    if (this.answer == null || this.answer.equals("")) {
+      return CopyQuestion;
+    }
+    CopyQuestion.answer(this.answer);
+    return CopyQuestion;
   }
 
   /**

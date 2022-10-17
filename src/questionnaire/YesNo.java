@@ -28,14 +28,4 @@ public class YesNo extends AbstractQuestion {
       throw new IllegalArgumentException();
     }
   }
-
-  @Override
-  public Question copy() {
-    Question copy = new YesNo(this.prompt, this.isRequired);
-    if (this.answer.equals("")) {
-      return copy;
-    }
-    copy.answer(this.answer);
-    return copy;
-  }
 }
