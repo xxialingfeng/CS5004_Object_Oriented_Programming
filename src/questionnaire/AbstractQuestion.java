@@ -73,20 +73,22 @@ public class AbstractQuestion implements Question {
    */
   @Override
   public Question copy() throws IllegalArgumentException {
-    if (this.answer == null || this.answer.equals("")) {
-      throw new IllegalArgumentException();
-    }
-    AbstractQuestion copyQuestion = new AbstractQuestion(this.prompt, this.isRequired);
-    copyQuestion.answer(this.answer);
-    return copyQuestion;
+    return null;
   }
 
-
+  /**
+   * add identifier.
+   * @param identifier string.
+   */
   @Override
   public void AddIdentifier(String identifier) {
     this.identifier = identifier;
   }
 
+  /**
+   * Get identifier.
+   * @return identifier
+   */
   @Override
   public String GetIdentifier() {
     return this.identifier;

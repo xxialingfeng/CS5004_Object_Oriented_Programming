@@ -28,4 +28,11 @@ public class ShortAnswer extends AbstractQuestion {
     }
     this.answer = str;
   }
+
+  @Override
+  public Question copy() {
+    Question copy = new ShortAnswer(this.prompt, this.isRequired);
+    copy.answer(this.answer);
+    return copy;
+  }
 }

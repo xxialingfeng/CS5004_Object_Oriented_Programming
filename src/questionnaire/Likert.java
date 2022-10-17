@@ -33,4 +33,14 @@ public class Likert extends AbstractQuestion {
     }
     throw new IllegalArgumentException();
   }
+
+  @Override
+  public Question copy() {
+    Question copy = new Likert(this.prompt, this.isRequired);
+    if (this.answer.equals("")) {
+      return copy;
+    }
+    copy.answer(this.answer);
+    return copy;
+  }
 }
