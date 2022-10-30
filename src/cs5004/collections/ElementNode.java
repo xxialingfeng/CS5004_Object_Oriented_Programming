@@ -9,6 +9,8 @@ public class ElementNode implements INode {
   private String value;
   private Integer priority;
   private INode next;
+  private final int UpperBound = 10;
+  private final int LowerBound = 1;
 
   /**
    * This is a constructor for element node.
@@ -46,7 +48,7 @@ public class ElementNode implements INode {
     if (priority == null || value == null) {
       throw new IllegalArgumentException("Priority or value cannot be null");
     }
-    if (priority > 10 || priority < 1) {
+    if (priority > UpperBound || priority < LowerBound) {
       throw new IllegalArgumentException("Priority Value out of range");
     }
 

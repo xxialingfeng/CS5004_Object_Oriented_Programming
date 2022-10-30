@@ -7,6 +7,8 @@ import java.util.Objects;
  */
 public class ListPriorityQueue implements PriorityQueue {
   private INode head;
+  private final int UpperBound = 10;
+  private final int LowerBound = 1;
 
   /**
    * This is a constructor of ListPQ.
@@ -49,7 +51,7 @@ public class ListPriorityQueue implements PriorityQueue {
       throw new IllegalArgumentException("Priority or value null");
     }
 
-    if (priority > 10 || priority < 1) {
+    if (priority > UpperBound || priority < LowerBound) {
       throw new IllegalArgumentException("Priority Value out of range");
     }
 
