@@ -1,4 +1,4 @@
-package cs5004.collcetions;
+package cs5004.collections;
 
 /**
  * This is a priority queue interface.
