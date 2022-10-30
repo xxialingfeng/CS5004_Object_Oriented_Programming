@@ -20,7 +20,8 @@ public interface PriorityQueue {
   PriorityQueue add(Integer priority, String value) throws IllegalArgumentException;
 
   /**
-   * Gets the value of the highest priority element. If there are multiple elements that have the same priority, gets
+   * Gets the value of the highest priority element.
+   * If there are multiple elements that have the same priority, gets
    * the value  of the most recently added element.
    * @return The value  of the highest priority element.
    * @throws EmptyPriorityQueueException if the PQ is empty.
