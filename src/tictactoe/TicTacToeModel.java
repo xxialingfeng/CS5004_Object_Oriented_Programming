@@ -62,7 +62,6 @@ public class TicTacToeModel implements TicTacToe {
   }
 
   /**
-   *
    * Return whether the game is over.
    * @return  true if the game is over, false otherwise.
    */
@@ -121,9 +120,7 @@ public class TicTacToeModel implements TicTacToe {
   public Player[][] getBoard() {
     Player[][] copy = new Player[3][3];
     for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        copy[i][j] = board[i][j];
-      }
+      System.arraycopy(board[i], 0, copy[i], 0, 3);
     }
 
     return copy;
