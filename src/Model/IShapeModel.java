@@ -1,7 +1,7 @@
 package Model;
 
 /**
- * This is an interface representing shape model.
+ * This is an interface representing ShapeModel.
  */
 public interface IShapeModel {
 
@@ -87,4 +87,5 @@ public interface IShapeModel {
    * @return boolean true if exists
    */
   boolean checkRepeatName(String s);
+
 }

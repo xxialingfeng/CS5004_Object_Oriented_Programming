@@ -19,20 +19,18 @@ import Shape.Rectangle;
  */
 public class ShapeModel implements IShapeModel {
   private List<IShape> shapeList;
-  private Map<String, String> desMap;
-  private Map<String, List<IShape>> shapeMap;
-  private static final SimpleDateFormat timeStampFormat
-      = new SimpleDateFormat("dd-MM-yyyy");
+  private Map<String, String> DescriptionMap;
+  private Map<String, List<IShape>> ShapeMap;
+  private static final SimpleDateFormat TimeStampFormat1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
   /**
-   * This is a constructor for shape model.
+   * This is a constructor for ShapeModel.
    */
   public ShapeModel() {
-    shapeMap = new HashMap<>();
-    desMap = new HashMap<>();
+    ShapeMap = new HashMap<>();
+    DescriptionMap = new HashMap<>();
     shapeList = new ArrayList<>();
   }
-
 
   /**
    * SnapShot the current timestamp and save the description and shape list to the album.
@@ -43,27 +41,14 @@ public class ShapeModel implements IShapeModel {
     Instant now = Instant.now();
     Date date = new Date();
     // key is timestamp, value is list of shape.
-    shapeMap.put(now.toString(), new ArrayList<>(shapeList));
+    ShapeMap.put(now.toString(), new ArrayList<>(shapeList));
 
     String SnapInfo = "\nSnapShot ID: " + now
-        + "\n" + "TimeStamp: " + timeStampFormat.format(date)
+        + "\n" + "TimeStamp: " + TimeStampFormat1.format(date)
         + "\n" + "Description: " + Description + "\n"
         + "Shape Information:";
     // key is timestamp, value is Information
-    desMap.put(now.toString(), SnapInfo);
-  }
-
-  /**
-   * Print list of all shape.
-   * @return string format
-   */
-  @Override
-  public String printShapeList() {
-    StringBuilder shapeListInfo = new StringBuilder();
-    for (IShape shape : shapeList) {
-      shapeListInfo.append(shape.toString()).append("\n");
-    }
-    return shapeListInfo.toString();
+    DescriptionMap.put(now.toString(), SnapInfo);
   }
 
   /**
@@ -73,14 +58,23 @@ public class ShapeModel implements IShapeModel {
   @Override
   public String printSnapShapeList() {
     StringBuilder ShapeListInfo = new StringBuilder();
-    for (String time: desMap.keySet()) {
-      ShapeListInfo.append(desMap.get(time)).append("\n");
-      List<IShape> shapes = shapeMap.get(time);
+    for (String time: DescriptionMap.keySet()) {
+      ShapeListInfo.append(DescriptionMap.get(time)).append("\n");
+      List<IShape> shapes = ShapeMap.get(time);
       for (IShape shape: shapes) {
         ShapeListInfo.append(shape.toString()).append("\n\n");
       }
     }
     return ShapeListInfo.toString();
+  }
+
+  @Override
+  public String printShapeList() {
+    StringBuilder shapeListInfo = new StringBuilder();
+    for (IShape shape: shapeList) {
+      shapeListInfo.append(shape.toString()).append("\n");
+    }
+    return shapeListInfo.toString();
   }
 
   /**
@@ -89,7 +83,7 @@ public class ShapeModel implements IShapeModel {
    */
   @Override
   public String printSnapShotList() {
-    return "List of SnapShot taken before reset: \n" + desMap.keySet();
+    return "List of SnapShot taken before reset: \n" + DescriptionMap.keySet();
   }
 
   /**
@@ -104,6 +98,7 @@ public class ShapeModel implements IShapeModel {
    * @param ColorR shape Color R value
    * @param ColorG shape Color G value
    * @param ColorB shape Color B value
+   *
    * @throws IllegalArgumentException " "
    */
   @Override
@@ -162,7 +157,7 @@ public class ShapeModel implements IShapeModel {
     for (IShape each: shapeList) {
       if (name.equals(each.getName())) {
         Color newColor = new Color(newR, newG, newB);
-        each = each.changeColor(newColor);
+        each.changeColor(newColor);
         return;
       }
     }
@@ -176,7 +171,7 @@ public class ShapeModel implements IShapeModel {
     for (IShape each: shapeList) {
       if (name.equals(each.getName())) {
         Position newPos = new Position(newX, newY);
-        each = each.move(newPos);
+        each.move(newPos);
         return;
       }
     }
@@ -189,7 +184,7 @@ public class ShapeModel implements IShapeModel {
     }
     for (IShape each: shapeList) {
       if (name.equals(each.getName())) {
-        each = each.changeSize(newSize1, newSize2);
+        each.changeSize(newSize1, newSize2);
         return;
       }
     }
@@ -198,8 +193,8 @@ public class ShapeModel implements IShapeModel {
   @Override
   public void reset() {
     shapeList.clear();
-    desMap.clear();
-    shapeMap.clear();
+    DescriptionMap.clear();
+    ShapeMap.clear();
   }
 
   @Override
