@@ -1,215 +1,164 @@
 package Model;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import Shape.Color;
 import Shape.IShape;
 import Shape.Oval;
-import Shape.Position;
 import Shape.Rectangle;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
- * This is a ShapeModel class.
+ * This class represents a PhotoAlbumModel. It has a collection of shape objects.
  */
 public class ShapeModel implements IShapeModel {
-  private List<IShape> shapeList;
-  private Map<String, String> DescriptionMap;
-  private Map<String, List<IShape>> ShapeMap;
-  private static final SimpleDateFormat TimeStampFormat1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+  private Map<String, IShape> album;
+  private Snapshot selfie;
+  private static final int MIN_SIZE = 0;
+  private static final int MAX_SIZE = 1000;
 
   /**
-   * This is a constructor for ShapeModel.
+   * Constructs the PhotoAlbumModel object.
    */
   public ShapeModel() {
-    ShapeMap = new HashMap<>();
-    DescriptionMap = new HashMap<>();
-    shapeList = new ArrayList<>();
-  }
-
-  /**
-   * SnapShot the current timestamp and save the description and shape list to the album.
-   * @param Description description of the snapshot.
-   */
-  @Override
-  public void SnapShot(String Description) {
-    Instant now = Instant.now();
-    Date date = new Date();
-    // key is timestamp, value is list of shape.
-    ShapeMap.put(now.toString(), new ArrayList<>(shapeList));
-
-    String SnapInfo = "\nSnapShot ID: " + now
-        + "\n" + "TimeStamp: " + TimeStampFormat1.format(date)
-        + "\n" + "Description: " + Description + "\n"
-        + "Shape Information:";
-    // key is timestamp, value is Information
-    DescriptionMap.put(now.toString(), SnapInfo);
-  }
-
-  /**
-   * Print Shape List of all snapshots.
-   * @return String of concatenating shape information.
-   */
-  @Override
-  public String printSnapShapeList() {
-    StringBuilder ShapeListInfo = new StringBuilder();
-    for (String time: DescriptionMap.keySet()) {
-      ShapeListInfo.append(DescriptionMap.get(time)).append("\n");
-      List<IShape> shapes = ShapeMap.get(time);
-      for (IShape shape: shapes) {
-        ShapeListInfo.append(shape.toString()).append("\n\n");
-      }
-    }
-    return ShapeListInfo.toString();
+    // Use LinkedHashMap to store the input shapes to guarantee the added order is kept
+    this.album = new LinkedHashMap<>();
+    this.selfie = new Snapshot();
   }
 
   @Override
-  public String printShapeList() {
-    StringBuilder shapeListInfo = new StringBuilder();
-    for (IShape shape: shapeList) {
-      shapeListInfo.append(shape.toString()).append("\n");
-    }
-    return shapeListInfo.toString();
-  }
-
-  /**
-   * all Print SnapShot timestamps.
-   * @return list of all snapshots.
-   */
-  @Override
-  public String printSnapShotList() {
-    return "List of SnapShot taken before reset: \n" + DescriptionMap.keySet();
-  }
-
-  /**
-   * Create new IShape object and add it to the shape list.
-   *
-   * @param name Shape name
-   * @param type Shape type
-   * @param size1 shape width/x-radius
-   * @param size2 shape height/y-radius
-   * @param XPosition shape position for x-coordinate
-   * @param YPosition shape position for y-coordinate
-   * @param ColorR shape Color R value
-   * @param ColorG shape Color G value
-   * @param ColorB shape Color B value
-   *
-   * @throws IllegalArgumentException " "
-   */
-  @Override
-  public void CreateShape(String name, String type, double size1, double size2, double XPosition,
-      double YPosition, double ColorR, double ColorG, double ColorB)
+  public IShape createShape(String name, String shape, int x, int y,
+      int sizeOne, int sizeTwo, int r, int g, int b)
       throws IllegalArgumentException {
-    if (name == null || type == null) {
-      throw new IllegalArgumentException("Add Shape null");
+    // Check if the variables are valid input
+    if (name == null || name.equals("") || this.album.containsKey(name)
+        || shape == null || shape.equals("")
+        || sizeOne <= MIN_SIZE || sizeTwo <= MIN_SIZE
+        || r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+      throw new IllegalArgumentException("Invalid input.");
     }
-
-    if (!type.equalsIgnoreCase("oval")
-        && !type.equalsIgnoreCase("rectangle")) {
-      throw new IllegalArgumentException("Type nonexistent");
+    IShape shapePhoto = null;
+    switch (shape.toLowerCase()) {
+      case "oval":
+        shapePhoto = new Oval(name, x, y, sizeOne, sizeTwo, r, g, b);
+        break;
+      case "rectangle":
+        shapePhoto = new Rectangle(name, x, y, sizeOne, sizeTwo, r, g, b);
+        break;
     }
-
-    for (IShape each: shapeList) {
-      if (each.getName().equals(name)) {
-        return;
-      }
-    }
-
-    Color ShapeColor = new Color(ColorR, ColorG, ColorB);
-    Position ShapePos = new Position(XPosition, YPosition);
-    IShape shape = null;
-    if (type.equalsIgnoreCase("rectangle")) {
-      shape = new Rectangle(name, ShapeColor, ShapePos, size1, size2);
-    }
-    else if (type.equalsIgnoreCase("oval")) {
-      shape = new Oval(name, ShapeColor, ShapePos, size1, size2);
-    }
-    shapeList.add(shape);
+    this.album.put(name, shapePhoto);
+    return shapePhoto;
   }
 
   /**
-   * Remove existing Shape object.
-   * @param name String name
+   * Helper method to check if the given shape photo name is valid for the photo update methods.
+   * @param name the given shape photo name
+   * @return boolean true if the given name is valid and the shape is ready for updates
    */
-  @Override
-  public void removeShape(String name) {
-    if (name == null) {
-      throw new IllegalArgumentException("Remove shape is null");
-    }
-    for (IShape each: shapeList) {
-      if (name.equals(each.getName())) {
-        shapeList.remove(each);
-        return;
-      }
-    }
+  private boolean isValidForChange(String name) {
+    return name != null && !name.equals("") && album.containsKey(name)
+        && this.album.get(name) != null;
   }
 
   @Override
-  public void ChangeColor(String name, double newR, double newG, double newB) {
-    if (name == null) {
-      throw new IllegalArgumentException("Change Shape is null");
+  public void moveShape(String name, int x, int y) throws NoSuchElementException,
+      IllegalArgumentException {
+    if (!isValidForChange(name)) {
+      throw new NoSuchElementException("The given name does not exist or has no shape photo.");
     }
-    for (IShape each: shapeList) {
-      if (name.equals(each.getName())) {
-        Color newColor = new Color(newR, newG, newB);
-        each.changeColor(newColor);
-        return;
-      }
-    }
+    IShape shape = this.album.get(name);
+    shape.setLocation(x, y);
+    this.album.replace(name, shape);
   }
 
   @Override
-  public void ChangePos(String name, double newX, double newY) {
-    if (name == null) {
-      throw new IllegalArgumentException("Change shape is null");
+  public void resizeShape(String name, int sizeOne, int sizeTwo)
+      throws NoSuchElementException {
+    if (!isValidForChange(name)) {
+      throw new NoSuchElementException("The given name does not exist or has no shape photo.");
     }
-    for (IShape each: shapeList) {
-      if (name.equals(each.getName())) {
-        Position newPos = new Position(newX, newY);
-        each.move(newPos);
-        return;
-      }
-    }
+    IShape shape = this.album.get(name);
+    shape.setSize(sizeOne, sizeTwo);
+    this.album.replace(name, shape);
   }
 
   @Override
-  public void Resize(String name, double newSize1, double newSize2) {
-    if (name == null) {
-      throw new IllegalArgumentException("Change shape is null");
+  public void recolorShape(String name, int r, int g, int b)
+      throws NoSuchElementException {
+    if (!isValidForChange(name)) {
+      throw new NoSuchElementException("The given name does not exist or has no shape photo.");
     }
-    for (IShape each: shapeList) {
-      if (name.equals(each.getName())) {
-        each.changeSize(newSize1, newSize2);
-        return;
-      }
-    }
+    IShape shape = this.album.get(name);
+    shape.setColor(r, g, b);
+    this.album.replace(name, shape);
   }
 
   @Override
-  public void reset() {
-    shapeList.clear();
-    DescriptionMap.clear();
-    ShapeMap.clear();
+  public void removeShape(String name) throws NoSuchElementException {
+    if (!isValidForChange(name)) {
+      throw new NoSuchElementException("The given name does not exist or has no shape photo.");
+    }
+    this.album.remove(name);
   }
 
   @Override
-  public boolean checkRepeatName(String s) {
-    for (IShape shape: shapeList) {
-      if (s.equals(shape.getName())) {
-        return true;
-      }
+  public Map<String, IShape> getAlbum() {
+    return this.album;
+  }
+
+  @Override
+  public Snapshot getSelfie() {
+    return this.selfie;
+  }
+
+  @Override
+  public String takeSelfie(String description) {
+    // Get the user input of the snapshot description
+    return this.selfie.takeSnapshot(this, description);
+  }
+
+  @Override
+  public List<String> getSnapshotList() {
+    return Collections.unmodifiableList(this.selfie.getHistoryList());
+  }
+
+  @Override
+  public String printSnapshotIds() {
+    String list = this.getSnapshotList().stream()
+        .reduce("", (a, b) -> a + b + ", ");
+    if (list.length() < 2) {
+      return "List of snapshots taken before reset: []\n";
     }
-    return false;
+    // Remove the tailing "," to the list and return the formatted string
+    return "List of snapshots taken before reset: ["
+        + list.substring(0, list.length()-2) + "]\n";
+  }
+
+  @Override
+  public String getSnapshot(String id) {
+    return this.selfie.getSnapshot(id);
+  }
+
+  @Override
+  public String getSnapshotDetails() {
+    return this.selfie.getHistoryDetails();
+  }
+
+  @Override
+  public void resetAlbum() {
+    this.album.clear();
+    this.selfie.reset();
   }
 
   @Override
   public String toString() {
-    return "This is your Photo Album. \n"
-        + "Enter a move: (Remove/Add/Move/Resize/Color/SnapShot/Reset/Print/Quit)";
+    String output = "";
+    if (this.album != null) {
+      output = this.album.values().stream()
+          .map(shape -> shape.toString())
+          .reduce("", (a, b) -> a + b);
+    }
+    return output;
   }
 }

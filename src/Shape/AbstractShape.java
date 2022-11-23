@@ -1,35 +1,70 @@
 package Shape;
-
-import java.util.Objects;
-
 /**
- * This is a abstract class for Shape.
+ * This abstract class AbstractShape implements IShape.
  */
-public class AbstractShape implements IShape {
-  protected String name;
-  protected Color color;
-  protected Position pos;
+public abstract class AbstractShape implements IShape {
+  private String name;
+  private int x;
+  private int y;
+  private int sizeOne;
+  private int sizeTwo;
+  private int r;
+  private int g;
+  private int b;
 
   /**
-   * This is the constructor for AbstractShape.
-   * @param name String name.
-   * @param pos Position object.
-   * @param color Color object.
-   * @throws IllegalArgumentException if name is null.
+   * Constructs Shape objects.
+   * @param name the String representation of the shape name
+   * @param x the x-axis value of the shape location, origin is at the top left
+   * @param y the y-axis value of the shape location, origin is at the top left
+   * @param sizeOne the int of the first size value (width, x radius, etc.)
+   * @param sizeTwo the int of the second size value (height, y radius, etc.)
+   * @param r the red
+   * @param g the green
+   * @param b the blue
+   * @throws IllegalArgumentException if the input is invalid
    */
-  protected AbstractShape(String name, Color color, Position pos)
+  public AbstractShape(String name, int x, int y,
+      int sizeOne, int sizeTwo, int r, int g, int b)
       throws IllegalArgumentException {
-    if (name.length() == 0) {
-      throw new IllegalArgumentException("name should not be empty!");
+    if (name == null || name.equals("")
+        || sizeOne <= 0 || sizeTwo <= 0
+        || r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+      throw new IllegalArgumentException("Invalid input.");
     }
     this.name = name;
-    this.color = color;
-    this.pos = pos;
+    this.x = x;
+    this.y = y;
+    this.sizeOne = sizeOne;
+    this.sizeTwo = sizeTwo;
+    this.r = r;
+    this.g = g;
+    this.b = b;
   }
 
   @Override
-  public Position getPosition() {
-    return this.pos;
+  public void setLocation(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  @Override
+  public void setSize(int one, int two) throws IllegalArgumentException {
+    if (one <= 0 || two <= 0) {
+      throw new IllegalArgumentException("Size cannot be zero or negative.");
+    }
+    this.sizeOne = one;
+    this.sizeTwo = two;
+  }
+
+  @Override
+  public void setColor(int r, int g, int b) throws IllegalArgumentException {
+    if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+      throw new IllegalArgumentException("Invalid input.");
+    }
+    this.r = r;
+    this.g = g;
+    this.b = b;
   }
 
   @Override
@@ -38,44 +73,37 @@ public class AbstractShape implements IShape {
   }
 
   @Override
-  public Color getColor() {
-    return this.color;
+  public int getX() {
+    return this.x;
   }
 
   @Override
-  public IShape move(Position newPos) {
-    return null;
+  public int getY() {
+    return this.y;
   }
 
   @Override
-  public IShape changeColor(Color newColor) {
-    return null;
+  public int getSizeOne() {
+    return this.sizeOne;
   }
 
   @Override
-  public IShape changeSize(double size1, double size2) {
-    return null;
+  public int getSizeTwo() {
+    return this.sizeTwo;
   }
 
-  /**
-   * Equal method to compare shape objects.
-   * @param o IShape object.
-   * @return boolean whether two objects are equal.
-   */
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AbstractShape that = (AbstractShape) o;
-    return name.equals(that.name) && pos.equals(that.pos) && color.equals(that.color);
+  public int getRed() {
+    return this.r;
   }
 
-  /**
-   * HashCode of IShape object.
-   * @return int
-   */
   @Override
-  public int hashCode() {
-    return Objects.hash(name, pos, color);
+  public int getGreen() {
+    return this.g;
+  }
+
+  @Override
+  public int getBlue() {
+    return this.b;
   }
 }

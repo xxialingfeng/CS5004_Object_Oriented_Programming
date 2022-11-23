@@ -1,48 +1,85 @@
 package Shape;
 
 /**
- * This is a interface indicating photo shape.
+ * The IShape interface.
  */
 public interface IShape {
 
   /**
-   * get the position of the shape.
-   * @return position
+   * Sets the location of the shape photo album on a canvas.
+   * @param x the new x-axis value of the shape location
+   * @param y the new y-axis value of the shape location
+   * @throws IllegalArgumentException if the shape is outside the canvas (origin at top left)
    */
-  Position getPosition();
+  void setLocation(int x, int y);
 
   /**
-   * Get the name of the shape.
-   * @return name
+   * Sets the size of the shape photo album.
+   * @param one the new first positive value of the shape photo (weight, x radius, etc.)
+   * @param two the new second positive value of the shape photo (height, y radius, etc.)
+   * @throws IllegalArgumentException if the input is not positive
+   */
+  void setSize(int one, int two) throws IllegalArgumentException;
+
+  /**
+   * Sets the color of the shape photo album.
+   * @param r the red
+   * @param g the green
+   * @param b the blue
+   */
+  void setColor(int r, int g, int b) throws IllegalArgumentException;
+
+  /**
+   * Gets the name of the shape.
+   * @return a String representation of the name
    */
   String getName();
 
   /**
-   * Get color of IShape object.
-   * @return color
+   * Gets the x-axis value of the shape.
+   * @return the x-axis value of the shape
    */
-  Color getColor();
+  int getX();
 
   /**
-   * Move the position of IShape object.
-   * @param newPos new Position.
-   * @return new IShape object.
+   * Gets the y-axis value of the shape.
+   * @return the y-axis value of the shape
    */
-  IShape move(Position newPos);
-
+  int getY();
 
   /**
-   * Change color of IShape object.
-   * @param newColor new Color.
-   * @return new IShape object.
+   * Gets the first size value of the shape.
+   * @return the first shape size value
    */
-  IShape changeColor(Color newColor);
+  int getSizeOne();
 
   /**
-   * Change size of IShape object.
-   * @param size1 newSize1
-   * @param size2 newSize2
-   * @return new IShape object.
+   * Gets the second size of the shape.
+   * @return the second shape size value
    */
-  IShape changeSize(double size1, double size2);
+  int getSizeTwo();
+
+  /**
+   * Gets the red color of the shape photo.
+   * @return the shape color red
+   */
+  int getRed();
+
+  /**
+   * Gets the green color of the shape photo.
+   * @return the shape color green
+   */
+  int getGreen();
+
+  /**
+   * Gets the blue color of the shape photo.
+   * @return the shape color blue
+   */
+  int getBlue();
+
+  /**
+   * Gets the shape type.
+   * @return the String representation of the shape type
+   */
+  String getType();
 }

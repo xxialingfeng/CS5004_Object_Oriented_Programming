@@ -1,91 +1,115 @@
 package Model;
 
+import Shape.IShape;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+
 /**
- * This is an interface representing ShapeModel.
+ * Shape Photo Album Model interface.
  */
 public interface IShapeModel {
 
   /**
-   * Snapshot the album and save the current timestamp and shape list.
-   * @param Description description of the snapshot.
+   * Creates a shape object. The customer may want to get copies of the same shape photos,
+   * therefore, the same shape with different names sharing the same other features
+   * can be created and added to the album multiple times.
+   * The photo album size is 1000 * 1000. The origin (0,0) is the upper left corner of the canvas.
+   * @param name the unique name of the shape photo (cannot be null or empty or existed)
+   * @param shape the String representation of the shape type (cannot be null or empty)
+   * @param x the x-axis value of the shape location (0 <= x <= 1000)
+   * @param y the y-axis value of the shape location (0 <= y <= 1000)
+   * @param sizeOne the first positive value of the shape photo (weight, x radius, etc.)
+   * @param sizeTwo the second positive value of the shape photo (height, y radius, etc.)
+   * @param r the red
+   * @param g the green
+   * @param b the blue
+   * @throws IllegalArgumentException if the input is invalid
    */
-  void SnapShot(String Description);
-
+  IShape createShape(String name, String shape, int x, int y, int sizeOne, int sizeTwo,
+      int r, int g, int b) throws IllegalArgumentException;
 
   /**
-   * Print current shape list.
-   * @return String form of shape list.
+   * Moves the given shape photo to a new location.
+   * @param name the name of the shape photo to be moved
+   * @param x the x-axis value of the new location
+   * @param y the y-axis value of the new location
+   * @throws NoSuchElementException if the given name does not exist or contains null value
    */
-  String printShapeList();
+  void moveShape(String name, int x, int y) throws NoSuchElementException;
 
   /**
-   * Print out timestamp and shape list.
-   * @return string of description and shape list
+   * Resizes the given shape photo.
+   * @param name the name of the shape photo to be resized
+   * @param sizeOne the new size of weight, x radius, etc.
+   * @param sizeTwo the new size of height, y radius, etc.
+   * @throws NoSuchElementException if the given name does not exist or contains null value
    */
-  String printSnapShapeList();
+  void resizeShape(String name, int sizeOne, int sizeTwo) throws NoSuchElementException;
 
   /**
-   * Print out snapshotID list.
-   * @return string of SnapshotID.
+   * Recolors the given shape photo.
+   * @param name the name of the shape photo
+   * @param r the red
+   * @param g the green
+   * @param b the blue
+   * @throws NoSuchElementException if the given name does not exist or contains null value
    */
-  String printSnapShotList();
+  void recolorShape(String name, int r, int g, int b) throws NoSuchElementException;
 
   /**
-   * Create a new IShape object and put it in the shape list.
-   * @param name Shape name
-   * @param type Shape type
-   * @param size1 shape width/x-radius
-   * @param size2 shape height/y-radius
-   * @param XPosition shape position for x-coordinate
-   * @param YPosition shape position for y-coordinate
-   * @param ColorR shape Color R value
-   * @param ColorG shape Color G value
-   * @param ColorB shape Color B value
+   * Removes a shape photo.
+   * @param name the name of the shape photo to be removed
+   * @throws NoSuchElementException if the given name does not exist or contains null value
    */
-  void CreateShape(String name, String type, double size1, double size2,
-      double XPosition, double YPosition, double ColorR, double ColorG, double ColorB);
+  void removeShape(String name) throws NoSuchElementException;
 
   /**
-   * Remove shape
-   * @param name String name
+   * Returns the album collection.
+   * @return the album collection
    */
-  void removeShape(String name);
+  Map<String, IShape> getAlbum();
 
   /**
-   * Change color of existing IShape object.
-   * @param name IShape name
-   * @param newR new IShape Color R value
-   * @param newG new IShape Color G value
-   * @param newB new IShape Color B value
+   * Returns the snapshot object.
+   * @return the snapshot object
    */
-  void ChangeColor(String name, double newR, double newG, double newB);
+  Snapshot getSelfie();
 
   /**
-   * Change position of existing IShape object.
-   * @param name IShape name
-   * @param newX new IShape X-coordinate
-   * @param newY new IShape Y-coordinate
+   * Takes and returns a snapshot of this album.
+   * @param description the description of the snapshot. It can be empty or null.
+   * @return String representation of the snapshot
    */
-  void ChangePos(String name, double newX, double newY);
+  String takeSelfie(String description);
 
   /**
-   * Change size of existing IShape object.
-   * @param name IShape name
-   * @param newSize1 new IShape size one
-   * @param newSize2 new IShape size two
+   * Returns the list of snapshot ids.
+   * @return the list of snapshot ids
    */
-  void Resize(String name, double newSize1, double newSize2);
+  List<String> getSnapshotList();
 
   /**
-   * Reset the album and list.
+   * Returns the list of snapshot ids.
+   * @return the String representation of list of snapshot ids
    */
-  void reset();
+  String printSnapshotIds();
 
   /**
-   * Check if the given string s is already in the shape list.
-   * @param s given string IShape name
-   * @return boolean true if exists
+   * Returns the specific snapshot details.
+   * @param id the snapshot id
+   * @return the specific snapshot details
    */
-  boolean checkRepeatName(String s);
+  String getSnapshot(String id);
 
+  /**
+   * Returns details of snapshot history.
+   * @return details of snapshot history
+   */
+  String getSnapshotDetails();
+
+  /**
+   * Clears and resets the album into an empty collection.
+   */
+  void resetAlbum();
 }
