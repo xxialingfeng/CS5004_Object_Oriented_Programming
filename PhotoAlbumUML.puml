@@ -6,83 +6,113 @@ interface IShape
 abstract class AbstractShape
 class Oval
 class Rectangle
-class Color
-class Position
 }
 
 package "Model" {
 interface IShapeModel
 class ShapeModel
+class Snapshot
 }
 
 IShape <-- AbstractShape
 AbstractShape <- Rectangle
 AbstractShape <- Oval
-AbstractShape "1" *-- "1" Position
-AbstractShape "1" *-- "1" Color
+
 
 IShapeModel <-- ShapeModel
-
 ShapeModel *-- IShape
 
 abstract class AbstractShape {
 - name
-- position
-- color
-+ getPosition
-+ getName
-+ getColor
-+ move
-+ changeColor
-+ changeSize
-}
-
-class Color {
+- x
+- y
 - r
 - g
 - b
-+ outOfBound
-+ toString
-}
-
-class Position {
-- x
-- y
-+ toString
+- sizeOne
+- sizeTwo
++ setLocation
++ setSize
++ setName
++ getX
++ getY
++ getSizeOne
++ getSizeTwo
++ getRed
++ getGreen
++ getBlue
 }
 
 class Oval {
-- XRadius
-- YRadius
-+ getXRadius
-+ getYRadius
++ getType
++ toString
 }
 
 class Rectangle {
-- height
-- width
-+ getHeight
-+ getWidth
++ getType
++ toString
 }
 
 interface IShapeModel {
-+ Snapshot()
-+ printShapeList()
-+ printSnapShapeList()
-+ printSnapShotList()
-+ CreateShape()
-+ removeShape()
-+ ChangeColor()
-+ ChangePos()
-+ Resize()
-+ reset()
-+ checkRepeatName()
++ createShape
++ moveShape
++ resizeShape
++ recolorShape
++ removeShape
++ getAlbum
++ getSelfie
++ takeSelfie
++ getSnapshotList
++ printSnapshotIds
++ getSnapshot
++ getSnapshotDetails
++ resetAlbum
+}
+
+interface IShape {
++ setLocation
++ setSize
++ setColor
++ getName
++ getX
++ getY
++ getSizeOne
++ getSizeTwo
++ getRed
++ getGreen
++ getBlue
 }
 
 class ShapeModel {
-- shapeList
-- DescriptionMap
-- ShapeMap
+- album
+- selfie
++ createShape
++ isValidForChange
++ moveShape
++ resizeShape
++ recolorShape
++ removeShape
++ getAlbum
++ getSelfie
++ takeSelfie
++ getSnapshotList
++ printSnapshotIds
++ getSnapshot
++ getSnapshotDetails
++ resetAlbum
+}
+
+class Snapshot {
+- historyList
+- historyDetails
+- startTime
+- idFormat
+- timestampFormat
++ takeSnapshot
++ getSnapshot
++ getHistoryList
++ getHistoryDetails
++ reset
 }
 
 @enduml
