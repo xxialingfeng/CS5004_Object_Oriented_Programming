@@ -1,4 +1,4 @@
-package tictactoe;
+package tictactoe_Prac;
 
 /**
  * Represents a Controller for Tic Tac Toe: handle user moves by executing them using the model;

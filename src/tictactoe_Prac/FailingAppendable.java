@@ -1,4 +1,4 @@
-package tictactoe;
+package tictactoe_Prac;
 
 import java.io.IOException;
 
