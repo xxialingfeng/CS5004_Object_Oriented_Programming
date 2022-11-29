@@ -1,7 +1,9 @@
 package Shape;
+
 /**
  * This abstract class AbstractShape implements IShape.
  */
+
 public abstract class AbstractShape implements IShape {
   private String name;
   private int x;
@@ -11,6 +13,9 @@ public abstract class AbstractShape implements IShape {
   private int r;
   private int g;
   private int b;
+  private static final int MIN_SIZE = 0;
+  private static final int MIN_COLOR = 0;
+  private static final int MAX_COLOR = 255;
 
   /**
    * Constructs Shape objects.
@@ -28,8 +33,8 @@ public abstract class AbstractShape implements IShape {
       int sizeOne, int sizeTwo, int r, int g, int b)
       throws IllegalArgumentException {
     if (name == null || name.equals("")
-        || sizeOne <= 0 || sizeTwo <= 0
-        || r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+        || sizeOne <= MIN_SIZE || sizeTwo <= MIN_SIZE
+        || outOfBound(r, g, b)) {
       throw new IllegalArgumentException("Invalid input.");
     }
     this.name = name;
@@ -50,16 +55,21 @@ public abstract class AbstractShape implements IShape {
 
   @Override
   public void setSize(int one, int two) throws IllegalArgumentException {
-    if (one <= 0 || two <= 0) {
+    if (one <= MIN_SIZE || two <= MIN_SIZE) {
       throw new IllegalArgumentException("Size cannot be zero or negative.");
     }
     this.sizeOne = one;
     this.sizeTwo = two;
   }
 
+  private boolean outOfBound(int r, int g, int b) {
+    return r < MIN_COLOR || g < MIN_COLOR || b < MIN_COLOR || r > MAX_COLOR
+        || g > MAX_COLOR || b > MAX_COLOR;
+  }
+
   @Override
   public void setColor(int r, int g, int b) throws IllegalArgumentException {
-    if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+    if (outOfBound(r, g, b)) {
       throw new IllegalArgumentException("Invalid input.");
     }
     this.r = r;

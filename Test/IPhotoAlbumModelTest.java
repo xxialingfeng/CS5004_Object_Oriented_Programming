@@ -9,7 +9,6 @@ import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
 import Model.ShapeModel;
-import Model.IShapeModel;
 import Shape.IShape;
 
 /**

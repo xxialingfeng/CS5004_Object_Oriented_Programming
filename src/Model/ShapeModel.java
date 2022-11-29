@@ -3,6 +3,7 @@ package Model;
 import Shape.IShape;
 import Shape.Oval;
 import Shape.Rectangle;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,10 +14,12 @@ import java.util.NoSuchElementException;
  * This class represents a PhotoAlbumModel. It has a collection of shape objects.
  */
 public class ShapeModel implements IShapeModel {
+  //This map is used for store the string information and the IShape information
   private Map<String, IShape> album;
   private Snapshot selfie;
   private static final int MIN_SIZE = 0;
-  private static final int MAX_SIZE = 1000;
+  private static final int MIN_COLOR = 0;
+  private static final int MAX_COLOR = 255;
 
   /**
    * Constructs the PhotoAlbumModel object.
@@ -27,6 +30,11 @@ public class ShapeModel implements IShapeModel {
     this.selfie = new Snapshot();
   }
 
+  private boolean outOfBound(int r, int g, int b) {
+    return r < MIN_COLOR || g < MIN_COLOR || b < MIN_COLOR || r > MAX_COLOR
+        || g > MAX_COLOR || b > MAX_COLOR;
+  }
+
   @Override
   public IShape createShape(String name, String shape, int x, int y,
       int sizeOne, int sizeTwo, int r, int g, int b)
@@ -35,7 +43,7 @@ public class ShapeModel implements IShapeModel {
     if (name == null || name.equals("") || this.album.containsKey(name)
         || shape == null || shape.equals("")
         || sizeOne <= MIN_SIZE || sizeTwo <= MIN_SIZE
-        || r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+        || outOfBound(r, g, b)) {
       throw new IllegalArgumentException("Invalid input.");
     }
     IShape shapePhoto = null;
@@ -132,7 +140,7 @@ public class ShapeModel implements IShapeModel {
     }
     // Remove the tailing "," to the list and return the formatted string
     return "List of snapshots taken before reset: ["
-        + list.substring(0, list.length()-2) + "]\n";
+        + list.substring(0, list.length() - 2) + "]\n";
   }
 
   @Override
@@ -156,7 +164,7 @@ public class ShapeModel implements IShapeModel {
     String output = "";
     if (this.album != null) {
       output = this.album.values().stream()
-          .map(shape -> shape.toString())
+          .map(Object::toString)
           .reduce("", (a, b) -> a + b);
     }
     return output;

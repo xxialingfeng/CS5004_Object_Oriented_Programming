@@ -7,7 +7,10 @@ The user can take snapshots whenever they want, the snapshot will record the cur
 This photo album is consisted of two packages, shape and model.
 Shape package is consisted of IShape interface, AbstractShape abstract class, Oval, Rectangle class.
 The shape package specifies what information an IShape object contains, including Type, name, Position and Color.
+Shape classes and interface associates with shape package by specifying a series of getter and setter method.
 
-Model package is consisted of Model. Model class and interface associates with shape package by specifying snapshot, print, change color,
-change position, change size and create shape method.
+Model package is consisted of ShapeModel class and Snapshot class, as well as IShapeModel interface.
+The Model package specifies what functions the shape model should have including create shape, resize/move/
+recolor shape, take snapshot, get all kinds of shape lists, and so on. The model is interacted with the used and has
+all kinds of functions which are required to implement.
 
